@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+<head>
+    <title>SJLSHS-Student Registration</title>
+</head>
+{% block content %}
+<body class="register-page">
+            <div class="reg-box">
+                <div class="reg-title">
+                    <h2>SJLSHS REGISTRATION</h2>
+                </div>
+                <div class="reg-forms">
+                    <form action="">
+                        <table>
+                            <tr>
+                                <td><label for="fname">First Name: </label></td>
+                                <td ><input type="text" id="fname" name="fname"><br></td>
+                                <td><label for="lname">Last Name: </label></td>
+                                <td><input type="text" id="lname" name="lname"><br></td>
+                            </tr>
+                            <tr>
+                                <td><label for="lrn">LRN: </label></td>
+                                <td colspan="3"><input type="text" id="lrn" name="lrn"><br></td>
+                            </tr>
+                            <tr>
+                                <td><label for="e-mail">E-mail: </label></td>
+                                <td><input type="email" id="e-mail" name="e-mail"><br></td>
+                                <td><label for="password">Password: </label></td>
+                                <td><input type="password" id="password" name="password"><br></td>
+                            </tr>
+                            
+                            <tr>
+                                <td></td>
+                                <td align="right"><input type="submit" name="register" value="Register"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="reg-add-info">
+
+                </div>
+            </div>
+    </div>
+</body>
+{% endblock %}
+</html>

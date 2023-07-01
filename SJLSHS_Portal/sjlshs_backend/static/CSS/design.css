@@ -1,0 +1,1228 @@
+.fade-in, .fade-inleft, .fade-inup {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+
+
+body, html {
+    margin: 0 0 0 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#splash {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #add8e6;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+}
+
+#splash img {
+	max-width: 200px;
+	margin-bottom: 20px;
+  animation: bob 2s ease-in-out infinite;
+}
+
+#loader {
+	border: 10px solid #f3f3f3;
+	border-top: 10px solid #3498db;
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@keyframes bob {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+#home-navigation a {
+    color: white;
+}
+
+#home-navigation {
+  box-shadow: -5px 10px 10px -6px #082148;
+}
+
+
+
+#drpdown-menu a {
+    color: black;
+}
+
+#welcome-message,
+#welcome-message-sub,
+#welcome-button,
+#sjlshs-logo-home {
+  display: none;
+}
+
+
+#sjlshs-logo-home {
+  
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+
+
+
+
+
+/* Chatbot container */
+#chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 3;
+}
+
+/* Chatbot toggle button */
+#chatbot-toggle {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+/* Chatbot popup */
+#chatbot {
+  position:relative;
+  overflow-y: auto;
+  max-height: 450px;
+  bottom: 100px;
+  right: 20px;
+  width: 350px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 3;
+}
+
+/* Chatbot header */
+#chatbot-header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Chatbot close button */
+#chatbot-close {
+  color: white;
+  font-size: 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Chatbot body */
+#chatbot-body {
+  height: 100%;
+  padding: 10px;
+  height: 360px;
+  overflow-y: auto;
+  padding-bottom:100px;
+}
+
+/* Chatbot form */
+#chatbot-form {
+  position: absolute;
+  display: flex;
+  margin-top: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 -2px 5px rgba(0,0,0,.1);
+  z-index: 4;
+}
+
+#chatbot-form input[type="text"] {
+  width: 70%;
+  margin-bottom: 0;
+}
+
+#chatbot-form button[type="submit"] {
+  width: 30%;
+  margin-bottom: 0;
+}
+
+/* Chatbot input */
+#message {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Chatbot submit button */
+#chatbot-form button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Chatbot response */
+.chatbot-response {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* Chatbot response text */
+.chatbot-response p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Chatbot response time */
+.chatbot-response small {
+  color: #999;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+
+#home-jumbotron {
+  border-radius: 0;
+  margin-bottom: 0;
+  min-height: 100vh;
+  background-image: url(../images/sjlshs_aerial_layered.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#home-jumbotron .display-4 {
+  font-size: 4rem;
+}
+
+#home-jumbotron p {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+#home-jumbotron .btn-primary {
+  background-color: #5fa3b7;
+  border-color: #5fa3b7;
+}
+
+#home-jumbotron .btn-primary:hover {
+  background-color: #2a7586;
+  border-color: #2a7586;
+}
+
+#home-jumbotron img {
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+  
+  .overlay {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    opacity: 0 !important;
+    transition: opacity 0.2s ease-in-out !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card:hover .overlay {
+    opacity: 1 !important;
+  }
+
+  .overlay h3 {
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .overlay a {
+    text-decoration: none;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 10px ;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.3s ease !important;
+  }
+  
+  .card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3)  ;
+    transform: translateY(-5px);
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+
+
+
+
+#col-school-logo {
+    background-image: url(../images/sch-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+
+}
+
+#bg-title {
+  margin: 40px auto 80px auto;
+  color: white;
+  text-align: center;
+  font-size: 5rem;
+  font-family: 'Merriweather', serif;
+  text-shadow: 10px 10px 10px black;
+}
+
+
+@media (max-width: 768px) {
+  /* Styles for mobile devices */
+  #bg-title {
+    font-size: 1.5rem; /* Smaller font size for mobile devices */
+  }
+
+  #orgs-sjlshs-logo {
+    width: 100%;
+    height:auto;
+  }
+}
+
+#home-btn {
+    position: absolute;
+    top: 70%;
+    left: 46%;
+    transition: opacity 1s ease, box-shadow 0.5s, padding 0.5s;
+}
+
+#home-btn button:hover {
+    box-shadow: 5px 5px 5px black;
+    padding: 10px 10px 10px 10px;
+    opacity: 0.8;
+}
+
+
+#announcements {
+  background-color: #f9f9f9;
+  background-image: url('../images/abstract-7.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#school-announcements {
+    font-size: 60px;
+    font-weight: 800;
+    font-family: 'Merriweather', serif;
+}
+
+@media (max-width: 768px) {
+  /* Styles for mobile devices */
+  #school-announcements {
+    font-size: 2rem; /* Smaller font size for mobile devices */
+  }
+
+  
+}
+
+
+#announcements-container {
+  overflow-x: hidden !important;
+  margin-right: 0px !important;
+}
+
+#announcements-home {
+  background-image: url(../images/registrar-layered.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+#announcements-row {
+  margin-right: 0px !important;
+  overflow-x: hidden !important;
+}
+
+
+
+.announcement-list-item a:not(:last-child) {
+  border-bottom: 1px solid blue;
+}
+
+.announcement-list-item {
+  overflow: hidden;
+}
+
+#announcement-title {
+  font-family: 'Montserrat', sans-serif !important;
+
+}
+
+.announcement-list-item > .card:first-child{
+  padding-top: 40px;
+  background: #0f3068;
+}
+
+
+.announcement-list-item > .card:nth-child(2) {
+  background-color: #3f91f7;
+}
+
+.announcement-list-item > .card:nth-child(3) {
+  background-color: #a0d8f1;
+}
+
+.announcement-list-item > .card:first-child:hover {
+  background-color: #082148;
+}
+
+.announcement-list-item > .card:nth-child(2):hover {
+  background-color: #2b6cb9;
+}
+
+.announcement-list-item > .card:nth-child(3):hover {
+  background-color: #74b4db;
+}
+
+
+
+#announcement-cards:hover {
+  box-shadow: none !important;
+  transform:none !important;
+}
+
+
+
+#announcements-col-title {
+  font-weight:bold;
+  font-family: 'Merriweather', serif;
+}
+
+
+
+
+
+
+.btn-primary {
+background-color: #3a78c3;
+border: none;
+border-radius: 30px;
+color: white;
+font-weight: bold;
+padding: 12px 32px;
+transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+background-color: #2357a3;
+}
+
+
+
+#school-events{
+  font-size: 60px;
+  font-weight: 800;
+  font-family: 'Merriweather', serif;
+}
+
+#school-events-subtitle{
+  color: #666;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#news-head {
+    font-size: 54px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+#news {
+  background-color: #add8e6;
+  background-image: url('../images/abstract-6.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 60px 0;
+}
+
+
+#news p {
+  font-size: 18px;
+  font-weight: 400;
+  color: #666;
+}
+
+
+#news-h1 {
+    font-size: 60px;
+    font-weight: 800;
+    font-family: 'Merriweather', serif;
+}
+
+
+#news-descrip {
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.news-inline {
+    position: absolute;
+    float:right;
+}
+
+@media screen and (min-width: 476px) {
+    .portal-box {
+        grid-template-rows: 1fr 1fr 1fr;
+        margin-right: 20%;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 50px 20px 100px 20px;
+    }
+}
+
+#student-portal {
+    background-image: url("../images/portal-collage.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.portal-box {
+    grid-template-rows: 1fr 1fr 1fr;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 50px 20px 100px 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#btn-portal {
+    margin-top: 20px;
+}
+
+#btn-portal2 {
+    margin-top: 20px;
+}
+
+#portal-redirect-bg {
+    background-image: url('../images/portal-bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+#stem-title, #humss-title, #abm-title, #tvl-title {
+    font-size: 50px;
+}
+
+#tracks-card1 {
+    background-image: linear-gradient(to right, #8360c3, #2ebf91);
+    margin-top: 0;
+}
+
+#tracks-card2 {
+    background-image: linear-gradient(-20deg, #00cdac 0%, #8ddad5 100%);
+}
+
+#club2, #club3, #club4, #club5 {
+    width: 25%;
+}
+
+#club2, #club4 {
+    margin-left: auto;
+}
+
+#club3, #club5 {
+    margin-right: auto;
+}
+
+#sch-orgs-head {
+    font-weight: bold;
+    font-size: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+  #sch-orgs-subtitle {
+    font-size: 1.5rem;
+    color: #777;
+    margin-bottom: 4rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .hover-img {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .hover-img img {
+    width: 100%;
+    height: auto;
+  }
+  .hover-img figcaption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+  }
+  .hover-img h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  .hover-img:hover figcaption {
+    opacity: 1;
+  }
+ 
+  @media only screen and (min-width: 768px) {
+    #sch-orgs-head {
+      font-size: 4rem;
+    }
+    #sch-orgs-subtitle {
+      font-size: 2rem;
+    }
+    .hover-img h3 {
+      font-size: 2rem;
+    }
+  }
+
+
+#tracks-strands {
+  background-image: url('../images/portal-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#tracks-strands img{
+    margin: 20px 20px 20px 0;
+}
+
+#tracks-strands h1{
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
+    font-size: 60px;
+}
+
+
+#tvl-subtitle, #stem-subtitle,
+#humss-subtitle, #abm-subtitle {
+    text-shadow: 5px 5px 10px black;
+}
+
+#tvl-description, #stem-description,
+#abm-description, #humss-description {
+    text-shadow: 3px 3px 10px black;
+}
+
+
+#offerings-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  /* Styles for mobile devices */
+  #offerings-subtitle {
+    font-size: 16px; /* Smaller font size for mobile devices */
+  }
+
+  #about-school {
+    font-size: 30px !important;
+  }
+
+  .enrollment-process h1 {
+    font-size: 30px !important;
+  }
+
+
+
+  
+}
+
+#strand-test {
+  background-image: url(../images/abstract-bg.jpeg);
+  background-repeat: no-repeat;
+}
+
+
+#strand-test-descrip {
+  font-family: 'Merriweather', serif;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+
+#carouselExampleIndicators img {
+  min-height: 95vh;
+  max-height: 95vh;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.carousel-indicators button {
+  background-color: transparent;
+  border: none;
+  height: 20px;
+  width: 20px;
+  margin: 0 5px;
+  transition: all 0.3s ease-in-out;
+  }
+  
+  .carousel-indicators .active {
+  background-color: #007bff;
+  border-radius: 50%;
+  }
+  
+  .carousel-indicators button:hover:not(.active) {
+  background-color: #007bff;
+  opacity: 0.7;
+  cursor: pointer;
+  transform: scale(1.2);
+  }
+
+
+  
+
+#campus-life{
+  background-image: url(../images/bg-gradient.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment:fixed;
+}
+
+.enrollment-process h1 {
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
+    font-size: 60px;
+    margin-top: 50px;
+}
+
+#enrollment-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+}
+
+
+#school-background-about {
+  background-image: url(../images/sjlshs_aerial.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  background-position: center center;
+}
+
+#shool-about-white {
+  background-color: white;
+}
+
+#about-school-img {
+    object-fit: cover;
+    width: 700px;
+    height: px;
+}
+
+#school-about-container {
+  background: #ad5389;
+  background: -webkit-linear-gradient(to right,
+      #3c1053,
+      #ad5389);
+  background: linear-gradient(to right,
+      #3c1053,
+      #ad5389);
+}
+
+.school-about-section {
+  border-radius: 58% 42% 39% 61% / 42% 24% 76% 58%;
+  width: 100%;
+  height: 700px;
+  background: white;
+  
+
+}
+
+
+
+
+#about-school{
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
+    font-size: 56px;
+    margin-top: 20px;
+}
+
+#about-school p {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#contacts {
+    background-color: #073b4c !important;
+    color: whitesmoke;
+    text-align: center;
+}
+
+#contacts h1{
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+#contacts p {
+    margin-left: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+}
+
+/* OFFERINGS CSS */
+#stem-strand-descrip
+ {
+  font-size: 14px;
+  background-image: url(../images/stem-img-opacity.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+#humss-strand-descrip {
+  font-size: 14px;
+  background-image: url(../images/humss-img-opacity.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#abm-strand-descrip {
+  font-size: 14px;
+  background-image: url(../images/abm-img-opacity.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#tvl-strand-description{
+  font-size: 14px;
+  background-image: url(../images/tvl-img-opacity.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* ENROLLMENT CSS */
+@media (max-width:768px) {
+  .scrollspy-example {
+    max-height: 600px;
+
+  }
+}
+
+
+/* REGISTRATION.HTML CSS */
+
+
+.reg-title {
+    text-align: center;
+}
+
+.register-page {
+    background-image: url("../images/school-bg-blurred.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.reg-box {
+    grid-template-rows: 1fr 1fr 1fr;
+    border: 1px solid black;
+    border-radius: 10px 10px;
+    margin: 50px 20% 20% 20%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px 20px 20px 20px;
+}
+
+#signup-cards-new {
+  background-color: #3ACBE8;
+}
+
+#signup-cards-registered {
+  background-color: #1CA3DE;
+}
+
+#signup-cards-editor {
+  background-color: #0D85D8;
+}
+
+#signup-cards-teacher {
+  background-color: #0160C9;
+}
+
+#signup-cards-admin {
+  background-color: #0041C7;
+}
+
+#signup-cards-new:hover {
+  background-color: #2B9DB7;
+  }
+  
+  #signup-cards-registered:hover {
+  background-color: #1677AB;
+  }
+  
+  #signup-cards-editor:hover {
+  background-color: #0A5D9E;
+  }
+  
+  #signup-cards-teacher:hover {
+  background-color: #0046A3;
+  }
+  
+  #signup-cards-admin:hover {
+  background-color: #002D97;
+  }
+
+/* 2FA SETUP */
+#lock-2fa {
+  animation: bounce 4s ease-in-out infinite;
+}
+
+/* 2FA SETUP COMPLETE*/
+#shield_lock_2fa {
+  animation: bounce 4s ease-in-out infinite;
+}
+
+
+/* SIGNUP-REDIRECT */
+
+#signup-redirect-body {
+  background-image: url("../images/portal-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+/* SIGN IN */
+#sjlshs-logo-login {
+  height: 200px;
+  width: 200px;
+}
+
+#sign-in-title {
+  font-family: 'Montserrat', serif;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+#student-login:hover {
+  transform: none !important;
+}
+
+
+/* LOGIN-REDIRECT */
+
+
+#login-menu-body {
+    background-color: #f1faff;
+  }
+
+#login-menu-body a {
+    text-decoration: none;
+}
+
+  
+  #login-image img {
+    width: 100%;
+    height: 100%;
+    
+  }
+  
+  #login-menu-container {
+    display:flex;
+    flex-direction: row;
+  justify-content: flex-end;
+    float: right;
+    height: 100%;
+  }
+
+  #login-menu-card-body {
+    height: 100%;
+  }
+  
+
+
+  #dashboard-card {
+    background-color: #ecf4ff;
+    padding: 1.2rem;
+    text-decoration: none;
+  }
+  
+  #dashboard-title {
+    color: #1886d9;
+    
+  }
+  
+  #announcements-card {
+    background-color: #ecf4ff;
+    padding: 1.2rem;
+    text-decoration: none;
+  }
+  
+  #announcements-title {
+    color: #1886d9;
+  }
+  
+  #master-file-card {
+    background-color: #ecf4ff;
+    padding: 1.2rem;
+    text-decoration: none;
+  }
+  
+  #master-file-title {
+    color: #1886d9;
+  }
+  
+  #module-repository-card {
+    background-color: #ecf4ff;
+    padding: 1.2rem;
+    text-decoration: none;
+  }
+  
+  #module-repository-title {
+    color: #1886d9;
+  }
+  
+  #schedule-card {
+    background-color: #ecf4ff;
+    padding: 1.2rem;
+    text-decoration: none;
+  }
+  
+  #schedule-title {
+    color: #1886d9;
+  }
+  
+  #evaluation-card {
+    background-color: #ecf4ff;
+    padding: 1.2rem;
+    text-decoration: none;
+  }
+  
+  #evaluation-title {
+    color: #1886d9;
+  }
+
+
+
+/* PORTAL-HOME.HTML CSS */
+
+
+/* PORTAL PERSONAL */
+#portal-personal-wrapper i{
+  font-size: 25px;
+}
+
+#portal-personal-wrapper h4{
+  display: inline-block;
+}
+
+/* PORTAL ANNOUNCEMENTS */
+#portal-announcements-wrapper i{
+  font-size: 25px;
+}
+
+#portal-announcements-wrapper h4{
+  display: inline-block;
+}
+
+/* PORTAL GRADES */
+
+#portal-grades12-wrapper i{
+  font-size: 25px;
+}
+
+#portal-grades12-wrapper h4{
+  display: inline-block;
+}
+
+/* PORTAL-SCHED */
+#sched-image {
+    width: 1000px;
+}
+
+#portal-sched-row1 {
+    height: 100%;
+    display: flex;
+}
+
+
+/* PORTAL-MODULE-REDIRECT */
+
+#module-heading {
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
+    font-size: 60px;
+    margin-top: 50px;
+}
+
+#module-subtitle {
+    font-size: 30px;
+}
+
+/* PORTAL-MODULE */
+
+#module-book {
+    object-fit: contain;
+}
+
+
+
+/* Wagtail Index Page */
+.body-text img {
+  max-width: 100% !important;
+  height:auto !important;
+}
+
+#body-text p {
+}
+
+#body-text img {
+  max-width: 100%;
+  height: auto;
+  
+}
+
+#org-home-page-list img {
+  max-width: 100%;
+  height: auto;
+}
+
+.richtext-image.full-width {
+  display:block;
+  margin: auto;
+  margin-bottom: 5px;
+}
+
+
+.richtext-image.right {
+  float:right;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+
+.richtext-image.left {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+#career-body-text img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* CSS for Summernote editor container */
+.summernote-container .note-editor {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .summernote-container .note-editor {
+      width: 100%;
+  }
+
+  .summernote-div {
+    width: 300px !important;
+
+  }
+
+  #id_body_iframe {
+    width: 300px;
+  }
+}
+

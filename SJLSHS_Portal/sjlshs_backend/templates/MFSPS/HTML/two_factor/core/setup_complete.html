@@ -1,0 +1,46 @@
+{% extends "two_factor/_base_focus.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<body>
+<div>
+  <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdrop2Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            
+            <div class="modal-body text-center">
+              <img src="{% static 'images/shield_lock.png'%}" class="img-fluid" id="shield_lock_2fa">
+              <h1 class="text-center display-6">{% trans "Your account is now more secure!" %}</h1>
+
+              <p class="text-center lead">{% blocktrans trimmed %}You can now proceed to MAPS.{% endblocktrans %}</p>
+            
+              {% if not phone_methods %}
+                  <div class="proceed-box text-center">
+                    <a href="{% url 'login-redirect'%}"><button class="btn btn-outline-primary">Proceed to MAPS</button></a>
+                  </div>
+                    
+              {% else %}
+                <p>{% blocktrans trimmed %}However, it might happen that you don't have access to
+                  your primary token device. To enable account recovery, add a phone
+                  number.{% endblocktrans %}</p>
+            
+                <p><a href="{% url 'two_factor:phone_create' %}"
+                    class="btn btn-success">{% trans "Add Phone Number" %}</a></p>
+              {% endif %}
+            </div>
+            
+        </div>
+    </div>
+</div>
+  
+</div>
+<script>
+  $(document).ready(function() {
+      $('#staticBackdrop2').modal('show');
+        });
+</script>
+<script src="{% static 'CSS/jquery-3.6.4.min.js'%}"></script>
+</body>
+{% endblock %}

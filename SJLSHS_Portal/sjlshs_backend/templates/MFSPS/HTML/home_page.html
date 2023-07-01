@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+{% load static %}
+{% block content %}
+<div class="container-fluid mb-5">
+  <div class="row" id="row-2-school-logo">
+    <div class="col" id="col-school-logo">
+      <img class="mx-auto d-block" src="{% static 'images/sjlshs_croppedV4.png'%}">
+      <h1 id="bg-title">Student Organizations</h1>
+    </div>
+  </div>
+</div>
+<div class="container mb-5">
+  <div class="row justify-content-center">
+    <h2 class="text-center display-4 mb-4 mt-4">Explore our student organizations</h2>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for org_page in home_page.get_children %}
+    <div class="col">
+      <div class="card h-100 fade-inup">
+        <div class="card-image">
+          {% image org_page.specific.feed_image fill-300x300 class="card-img-top"%}
+          <div class="overlay">
+            <a href="{{ org_page.url }}" class="btn btn-primary">Learn more</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title lead">{{ org_page.title }}</h5>
+          <p class="card-text">{{ org_page.short_description}}</p>
+        </div>
+        <div class="card-footer">
+          {% if org_page.icon %}
+          <img src="{{ org_page.icon.url }}" class="icon float-end" alt="{{ org_page.title }} icon">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  $(window).scroll(function() {
+      var windowHeight = $(window).height();
+      var scrollPos = $(window).scrollTop();
+
+      $('.fade-inleft').each(function() {
+        var offsetTop = $(this).offset().top;
+        if (scrollPos > offsetTop - windowHeight + 200) {
+          $(this).addClass('animate__animated animate__fadeInLeft');
+        }
+      });
+
+      $('.fade-in').each(function() {
+        var offsetTop = $(this).offset().top;
+        if (scrollPos > offsetTop - windowHeight + 200) {
+          $(this).addClass('animate__animated animate__fadeIn');
+        }
+      });
+
+      $('.fade-inup').each(function() {
+        var offsetTop = $(this).offset().top;
+        if (scrollPos > offsetTop - windowHeight + 200) {
+          $(this).addClass('animate__animated animate__fadeInUp');
+        }
+      });
+    });
+</script>
+{% endblock %}

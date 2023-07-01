@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% extends 'portal-base.html' %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {%block title%}
+  <title>MAPS Announcements</title>
+  {%endblock%}
+</head>
+
+<body>
+  {% block content %}
+  <div class="content-wrapper" class="portal-announcements-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <h1 class="text-center display-4">Announcements</h1>
+      </div>
+      <div class="row d-flex align-items-stretch">
+        <div class="col-lg-8 col-sm-12">
+        {% for universal_post in universal_posts %}
+          <div class="alert alert-info mt-3" role="alert">
+            <h4 class="alert-heading">{{ universal_post.Title}}</h4>
+            <p>{{ universal_post.Body|safe}}</p>
+            <hr>
+            <p class="mb-0">{{ universal_post.Published }}</p>
+          </div>
+        {% endfor %}
+        </div>
+        
+        <div class="col-lg-4 col-sm-12">
+          <div class="list-group mt-3">
+            <h5 class="list-group-item list-group-item-action active" aria-current="true">Recent School Announcements</h5>
+            {% for announcement_article in recent_announcements %}
+            <a href="{{ announcement_article.url }}" class="list-group-item list-group-item-action">{{announcement_article.title }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+      <div class="col-md-6 col-lg-12 col-sm-12">
+        <div class="card shadow-sm rounded">
+          <div class="card-header bg-primary text-white">
+            
+            <h4 class="ml-1 text-white"><i class="fas far fa-bullhorn mr-1"></i>Teacher Announcements</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                {% for Post in object_list %}
+                {% if user.section in Post.Section.all %}
+                <div class="card shadow-sm rounded mx-auto w-100">
+                  <div class="card-body">
+                    <!-- Use a badge to indicate the section of the post -->
+
+                    <!-- Use a heading with a blue accent to display the title of the post -->
+                    <h5 class="
+                        card-title
+                        text-primary
+                        border-bottom border-primary pb-2
+                      ">{{ Post.Title }}</h5>
+                    <!-- Use a paragraph to display the body of the post -->
+                    <p class="card-text">{{ Post.Body|safe }}</p>
+                  </div>
+                  <!-- Use a footer to display the author and date of the post -->
+                  <div class="card-footer bg-white">
+                    <p class="
+                        card-text small text-muted mb-0 d-flex align-items-center justify-content-between">
+                      <!-- Use an icon to indicate the author -->
+                      <i class="
+                          bi bi-person-circle me-1 text-info" style="
+                            font-size: 1.5rem;
+                            vertical-align: middle;
+                          "></i>{{ Post.Author }}
+                      <!-- Use an icon to indicate the date -->
+                      {{ Post.Published }}<i class="
+                          bi bi-calendar-check ms-1 text-primary" style="
+                            font-size: 1.5rem;
+                            vertical-align: middle;
+                          "></i>
+                    </p>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="card-footer bg-white">
+    ...
+    <p class="card-text small text-muted mb-0">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    </p>
+    <nav aria-label="...">
+      <ul class="pagination pagination-sm justify-content-end">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+        </li>
+        {% endif %}
+        {% for i in page_obj.paginator.page_range %}
+        {% if page_obj.number == i %}
+        <li class="page-item active">
+          <a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a>
+        </li>
+        {% else %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+  </div>
+
+
+  {% endblock %}
+
+</body>
+
+</html>

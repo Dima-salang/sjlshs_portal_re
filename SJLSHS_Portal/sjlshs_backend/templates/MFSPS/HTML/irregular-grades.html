@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+{% extends 'portal-base.html' %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block title%}
+    <title>Student Grades</title>
+    {%endblock%}
+    <!-- Add Bootstrap CDN link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    {% block content %}
+    <div class="content-wrapper">
+
+    <div class="container-fluid">
+        <h1 class="text-center display-4">Student Evaluation</h1>
+
+        <div class="table-responsive">
+
+        
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th colspan="3" class="text-center">First Semester - 1st Quarter</th>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grade in grades1st %}
+                <!-- Use Bootstrap contextual classes to color rows based on grade -->
+                {% if grade.grade >= 90 %}
+                <tr class="table-success">
+                {% elif grade.grade >= 80 %}
+                <tr class="table-info">
+                {% elif grade.grade >= 70 %}
+                <tr class="table-warning">
+                {% else %}
+                <tr class="table-danger">
+                {% endif %}
+                    <td>{{ grade.student.name }}</td>
+                    <td>{{ grade.subject }}</td>
+                    <td>{{ grade.grade }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th colspan="3" class="text-center">First Semester - 2ndst Quarter</th>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grade in grades2nd %}
+                <!-- Use Bootstrap contextual classes to color rows based on grade -->
+                {% if grade.grade >= 90 %}
+                <tr class="table-success">
+                {% elif grade.grade >= 80 %}
+                <tr class="table-info">
+                {% elif grade.grade >= 70 %}
+                <tr class="table-warning">
+                {% else %}
+                <tr class="table-danger">
+                {% endif %}
+                    <td>{{ grade.student.name }}</td>
+                    <td>{{ grade.subject }}</td>
+                    <td>{{ grade.grade }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="table-responsive">
+
+        
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th colspan="3" class="text-center">Second Semester - 3rd Quarter</th>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grade in grades3rd %}
+                <!-- Use Bootstrap contextual classes to color rows based on grade -->
+                {% if grade.grade >= 90 %}
+                <tr class="table-success">
+                {% elif grade.grade >= 80 %}
+                <tr class="table-info">
+                {% elif grade.grade >= 70 %}
+                <tr class="table-warning">
+                {% else %}
+                <tr class="table-danger">
+                {% endif %}
+                    <td>{{ grade.student.name }}</td>
+                    <td>{{ grade.subject }}</td>
+                    <td>{{ grade.grade }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-responsive">
+
+        
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th colspan="3" class="text-center">Second Semester - 4th Quarter</th>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grade in grades4th %}
+                <!-- Use Bootstrap contextual classes to color rows based on grade -->
+                {% if grade.grade >= 90 %}
+                <tr class="table-success">
+                {% elif grade.grade >= 80 %}
+                <tr class="table-info">
+                {% elif grade.grade >= 70 %}
+                <tr class="table-warning">
+                {% else %}
+                <tr class="table-danger">
+                {% endif %}
+                    <td>{{ grade.student.name }}</td>
+                    <td>{{ grade.subject }}</td>
+                    <td>{{ grade.grade }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    </div>
+</div>
+
+    {% endblock %}
+
+</body>
+
+</html>

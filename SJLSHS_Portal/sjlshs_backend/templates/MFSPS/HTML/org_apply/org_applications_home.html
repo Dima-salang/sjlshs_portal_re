@@ -1,0 +1,44 @@
+{% extends 'portal-base.html' %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="container py-5">
+        <div class="row">
+            <h1 class="text-center display-3">Apply for Organizations</h1>
+            {% if messages %}
+            <div class="col-12 mb-4">
+                {% for message in messages %}
+                <div class="alert alert-dismissible fade show alert-{{ message.tags }}" role="alert">
+                    <span class="fw-bold">{{ message.tags }}:</span> {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="alert alert-primary">
+                <p class="lead">You can now apply for organizations. Wait for the authorized students or the
+                    organization adviser to approve of your application.</p>
+            </div>
+            <a href="{% url 'orgs-apply-form'%}" class="text-center text-white text-decoration-none lead mb-4"><button class="btn btn-lg btn-primary mb-4">Apply for an Organization</button></a>
+            {% for org in organizations %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow">
+                    <div class="card-header">
+                        {% image org.feed_image fill-500x500 class="card-img-top" loading="lazy" aria-hidden="true" %}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">{{org.title}}</h5>
+                        <p class="card-text text-muted">{{org.short_description}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{org.url}}" role="button" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<head>
+  {%block title%}
+  <title>San Jose Litex Senior High School</title>
+  {%endblock%}
+
+  {% block extrahead %}
+  
+  {% endblock %}
+</head>
+
+<body>
+
+
+
+  {% block content %}
+  <div class="container-fluid px-0 mx-0">
+
+
+
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-12 text-center">
+          <div id="splash">
+            <img src="{% static 'images/sjlshs_croppedV4.png'%}" alt="School Logo">
+            <div id="loader"></div>
+            <h1 class="display-4 text-center font-weight-bold">Welcome!</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="jumbotron bg-dark text-light py-5" id="home-jumbotron">
+      <div class="container px-0">
+        <div class="row align-items-center px-0">
+          <div class="col-md-6 text-center order-lg-last">
+            <img class="img-fluid rounded-circle mb-4 mt-4" src="{% static 'images/sjlshs_croppedV4.png'%}"
+              alt="San Jose Litex Senior High School Logo" style="max-width: 300px;" id="sjlshs-logo-home">
+          </div>
+          <div class="col-md-6 text-center text-md-start">
+            <h1 class="display-4 mb-4 mt-5 font-weight-bold" style="font-family: 'Montserrat', sans-serif;"
+              id="welcome-message">San Jose Litex Senior High School</h1>
+            <p class="lead mb-3" style="font-family: 'Open Sans', sans-serif;" id="welcome-message-sub">Committed to
+              providing
+              quality education to its students, SJLSHS offers a wide range of academic programs and extracurricular
+              activities that promote intellectual, social, and emotional growth. With a team of highly qualified and
+              dedicated educators, San Jose Litex Senior High School prepares its students for success in college and
+              beyond.</p>
+            <button class="btn btn-primary btn-lg mt-5 mb-4"><a href="{% url 'about-view' %}"
+                class="text-white text-decoration-none" id="welcome-button">Learn more</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid px-0 my-0 overflow-hidden" id="announcements-container">
+      <div class="row my-0 py-0" id="announcements-row">
+        <div
+          class="col-md-5 px-0 pb-5 pt-5 d-flex align-items-center justify-content-center order-lg-last overflow-hidden flex-grow-1"
+          ; id="announcements-home">
+          <div class="text-center">
+            <h2 class="display-4 text-white mb-5" id="announcements-col-title">Latest Announcements</h2>
+            <button class="btn btn-primary btn-lg"><a href="{% url 'all-announcements' %}"
+                class="text-white text-decoration-none">View All Announcements</a></button>
+          </div>
+        </div>
+        <div class="col-md-7 px-0 py-0" style="background-color:whitesmoke;">
+          <div class="announcement-list-item overflow-hidden min-height-100vh max-height-100vh">
+            {% for article in recent_announcements.specific %}
+            {% if forloop.counter <= 3 %} <div class="card rounded-0 mx-2 pb-3 w-100 announcements fade-inleft
+              id="announcement-cards">
+              <div class="row mx-3 my-4">
+                <a href="{{article.url}}" class="text-decoration-none text-white">
+                  <h2 class="announcement-title mb-2 text-white" id="announcement-title" style="font-size: 40px;">
+                    {{article.title}}</h2>
+                  <p class="announcement-meta mb-1">
+                    <span class="badge bg-primary" style="font-size: 14px;">{{article.date}}</span>
+                  </p>
+                  <p class="announcement-snippet text-white mb-3" style="font-size: 16px;">
+                    {{article.body|truncatechars:200|richtext}}</p>
+                </a>
+              </div>
+          </div>
+          {% endif%}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container-fluid mt-5 px-0">
+    <div class="row">
+      <div class="col-md-5 mt-5 text-center">
+        <h2 class="text-center" id="school-events">Events</h2>
+        <p class="text-center mt-3" id="school-events-subtitle">Check out the latest happenings and prepared plans
+          and activities of the school to showcase the talents of Litexians and build a stronger sense of community</p>
+        <a href="{% url 'student-orgs'%}" class="btn btn-primary mb-4">Check out the events</a>
+      </div>
+      <div class="col-md-7">
+        <div class="row mx-1">
+          {% for article in recent_events.specific %}
+          {%if forloop.counter <= 6 %} <div class="col-md-4">
+            <div class="card mb-4 fade-in">
+              <div class="overlay">
+                <a href="{{article.url}}">
+                  <h3>{{article.title}}</h3>
+                </a>
+              </div>
+              {% image article.feed_image fill-500x500 class="card-img-top img-fluid" loading="lazy" aria-hidden="true" %}
+            </div>
+        </div>
+        {%endif%}
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+
+  <section id="news">
+    <div class="container-fluid px-0">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center mb-4" id="news-h1">School News</h1>
+          <p class="text-center mb-5" id="news-descrip">Get the latest news about SJLSHS and its students.</p>
+        </div>
+      </div>
+      <div class="row mx-2">
+        {% for article in recent_news.specific %}
+        {% if forloop.counter <= 3 %} <div class="col-md-4 mb-4">
+          <div class="card fade-inup">
+            {% image article.feed_image fill-1000x1000 class="card-img-top img-fluid" loading='lazy' aria-hidden="true" %}
+            <div class="card-body text-center">
+              <h4 class="card-title mb-2">{{ article.title }}</h4>
+              <p class="card-text mb-3">{{ article.body|truncatechars:200|richtext }}</p>
+              <a href="{{ article.url }}" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    </div>
+  </section>
+
+  <div class="container-fluid px-0">
+
+
+    <div class="row gx-0" id="student-portal">
+      <div class="col"></div>
+      <div class="col-md-6 col-sm-12">
+        <div class="portal-box">
+          <div class="reg-title">
+            <img src="{%static 'images/std_portal_logo2.png'%}" class="img-fluid">
+          </div>
+          <div class="portal-info">
+            <p class="text-center" style="font-size: 16px; padding: 10px;">The SJLSHS M.A.P.S is especially created for
+              students like you. The portal is a repository of information where students can view their
+              education-related info such as grades, modules, schedules, personal information, and teacher announcements
+            </p>
+            {% if user.is_authenticated %}
+            <a href="{% url 'login-redirect'%}"><button class="btn btn-primary mx-auto d-block" id="btn-portal"
+                style="font-size: 14px; padding: 10px;">Go to M.A.P.S</button></a>
+            {% else %}
+            <a href="{% url 'signup'%}"><button class="btn btn-primary mx-auto d-block" id="btn-portal2"
+                style="font-size: 14px; padding: 10px;">Go to M.A.P.S</button></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid px-0" id="tracks-strands">
+    <h1 class="text-center pt-4">Academic Offerings</h1>
+    <p class="text-center" id="offerings-subtitle">Discover the tracks and strands offered by the school</p>
+
+    <div class="row mx-2 pb-2" id="tracks-strands-bg">
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 max-height-80vh fade-inup">
+          <img src="{% static 'images/stem-img.jpg'%}" class="card-img-top" alt="STEM" loading="lazy">
+          <div class="card-body">
+            <h2 class="card-title text-center">STEM</h2>
+            <p class="card-text">The STEM strand is focused on the study of science and its related subjects, like math,
+              technology, and engineering. It also includes coursework that can help prepare you for college-level
+              science classes, like chemistry, physics, and biology. You'll learn how to apply critical thinking,
+              problem-solving, and communication skills in the classroom and workplace.</p>
+          </div>
+          <div class="card-footer text-center">
+            <a href="{% url 'home-offerings'%}" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 min-height-80vh max-height-80vh fade-inup">
+          <img src="{% static 'images/abm-img.jpg'%}" class="card-img-top" alt="ABM" loading="lazy">
+          <div class="card-body">
+            <h2 class="card-title text-center">ABM</h2>
+            <p class="card-text">Students in an accountancy and business management (ABM) strand can learn a wide range
+              of skills and knowledge that are relevant to careers in finance, business administration, and related
+              fields. They'll develop critical thinking, problem-solving, communication, and teamwork skills, which can
+              be useful in a variety of career paths.</p>
+          </div>
+          <div class="card-footer text-center">
+            <a href="{% url 'home-offerings'%}" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 min-height-80vh max-height-80vh fade-inup">
+          <img src="{% static 'images/humss-img.jpg'%}" class="card-img-top" alt="HUMSS" loading="lazy">
+          <div class="card-body">
+            <h2 class="card-title text-center">HUMSS</h2>
+            <p class="card-text">The humanities are a broad field of study that includes a range of disciplines that
+              explore the human experience, including history, literature, philosophy, art, music, and culture. In the
+              HUMSS strand, students will learn about the history and development of different cultures and societies,
+              and the ways in which these cultures have influenced and been influenced by art, literature, and other
+              forms of human expression.</p>
+          </div>
+          <div class="card-footer text-center min-height-80vh">
+            <a href="{% url 'home-offerings'%}" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+        <div class="card h-100 min-height-80vh max-height-80vh fade-inup">
+          <img src="{% static 'images/tvl-img.jpg'%}" class="card-img-top" alt="HUMSS" loading="lazy">
+          <div class="card-body">
+            <h2 class="card-title text-center">TVL</h2>
+            <p class="card-text">The technical-vocational-livelihood (TVL) strand provides students with hands-on
+              training and practical skills in a variety of technical and vocational fields, including culinary arts,
+              automotive technology, computer hardware servicing, and others. Students in this strand will learn how to
+              apply their knowledge and skills in real-world settings, preparing them for careers in the fields they
+              choose to specialize in. The TVL strand also emphasizes the importance of entrepreneurship and the
+              development of business skills.</p>
+          </div>
+          <div class="card-footer text-center">
+            <a href="{% url 'home-offerings'%}" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid pb-4 pt-4" id="strand-test"
+    style="background: linear-gradient(to right, #4a148c, #ff4081); color: #fff;">
+    <div class="row">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <h2 class="text-center" id="strand-test-descrip">Not sure what strand to choose yet?</h2>
+      </div>
+      <div class="col-md-6 text-center">
+        <a href="https://www.truity.com/test/holland-code-career-test" class="btn btn-primary px-4 py-4"
+          style="background: #fff; color: #4a148c; border-radius: 50px; animation: pulse 1s infinite;">Find Out!</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid px-0">
+
+
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade max-height-100vh">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+          aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+          aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+          aria-label="Slide 6"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"
+          aria-label="Slide 7"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7"
+          aria-label="Slide 8"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="8"
+          aria-label="Slide 9"></button>
+      </div>
+      <div class="carousel-inner">
+        {% for image in campus_life_images %}
+        {% if forloop.first %}
+        <div class="carousel-item active">
+          <img src="{{image.thumbnail.url}}" class="d-block w-100" loading="lazy" alt="...">
+          <div class="carousel-caption">
+            <h5 class="display-6">{{image.title}}</h5>
+          </div>
+        </div>
+        {% else %}
+        <div class="carousel-item">
+          <img src="{{image.thumbnail.url}}" class="d-block w-100" loading="lazy" alt="...">
+          <div class="carousel-caption">
+            <h5 class="display-6">{{ image.title }}</h5>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor%}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+
+
+
+  <div class="container-fluid px-0">
+    <div class="row gx-0">
+      <div class="col lg-12 md-12 sm-12">
+        <div class="enrollment-process">
+          <bold>
+            <h1 class="text-center">Enrollment</h1>
+          </bold>
+          <p class="text-center" id="enrollment-subtitle">Learn how to be a part of the Litexian community</p>
+          <img src="{% static 'images/enrollment-process.jpg' %}" class="img-fluid w-100 h-100">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container-fluid px-0">
+    <div class="row position-relative" id="school-background-about">
+      <div class="col bottom-0 start-0" id="school-about-white">
+      </div>
+    </div>
+  </div>
+
+
+  
+
+  </div>
+
+
+  <script src="{% static '/admin-lte/plugins/jquery/jquery.min.js' %}"></script>
+
+  <script>
+
+    $(window).scroll(function() {
+      var windowHeight = $(window).height();
+      var scrollPos = $(window).scrollTop();
+
+      $('.fade-inleft').each(function() {
+        var offsetTop = $(this).offset().top;
+        if (scrollPos > offsetTop - windowHeight + 200) {
+          $(this).addClass('animate__animated animate__fadeInLeft');
+        }
+      });
+
+      $('.fade-in').each(function() {
+        var offsetTop = $(this).offset().top;
+        if (scrollPos > offsetTop - windowHeight + 200) {
+          $(this).addClass('animate__animated animate__fadeIn');
+        }
+      });
+
+      $('.fade-inup').each(function() {
+        var offsetTop = $(this).offset().top;
+        if (scrollPos > offsetTop - windowHeight + 200) {
+          $(this).addClass('animate__animated animate__fadeInUp');
+        }
+      });
+    });
+
+
+
+    $(document).ready(function () {
+      // $("#home-navigation").css("background-color", "transparent");
+
+      // $(window).scroll(function() {
+      //   // Get the position of the jumbotron
+      //   var jumbotronBottom = $("#home-jumbotron").position().top + $("#home-jumbotron").outerHeight(true);
+
+      //   // If the user has scrolled past the jumbotron
+      //   if ($(window).scrollTop() > jumbotronBottom) {
+      //     // Set the navbar's background color to blue
+      //     $("#home-navigation").css("background-color", "#0d6efd");
+      //   } else {
+      //     // Set the navbar's background color back to transparent
+      //     $("#home-navigation").css("background-color", "transparent");
+      //   }
+      // });
+      // Fade out splash screen
+      $('#splash').fadeOut(1000, function () {
+        // Fade in the jumbotron after the splash screen has faded out
+        $('#home-jumbotron').fadeIn(3000);
+        $('#welcome-message').fadeIn(1300);
+        $('#welcome-message-sub').fadeIn(1500);
+        $('#welcome-button').fadeIn(2000);
+        $('#sjlshs-logo-home').fadeIn(2300);
+
+      });
+
+    
+
+    });
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}
+</body>

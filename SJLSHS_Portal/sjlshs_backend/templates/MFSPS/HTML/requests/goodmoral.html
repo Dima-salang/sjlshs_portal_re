@@ -1,0 +1,106 @@
+{% extends 'portal-base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="container">
+        <h1 class="text-center">Good Moral Request</h1>
+        <div class="row">
+            <div class="card mb-3 mx-2">
+                <div class="card-header bg-danger text-white">
+                    <span><i class="fas far fa-sticky-note"></i>
+                        <h4 class="ml-1" style="display: inline-block;">Note</h4>
+                    </span>
+
+                </div>
+                <div class="card-body">
+                    <p class="text-center">If you are currently enrolled and securing Certificate of Good Moral for
+                        college admissions and scholarship just fill-in Part I and if you are already transferred to
+                        another school or have plans to transfer, please fill-in Part I and Part II.</p>
+                </div>
+            </div>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+
+            <!-- Part 1 -->
+            <h1>Part I</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form.full_name|as_crispy_field}}
+                </div>
+                <div class="col-md-6">
+                    {{ form.grade_level|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form.lrn|as_crispy_field}}
+                </div>
+                <div class="col-md-6">
+                    {{ form.residence|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form.contact|as_crispy_field }}
+                </div>
+                <div class="col-md-6">
+                    {{ form.email|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form.years_stayed|as_crispy_field }}
+                </div>
+                <div class="col-md-6">
+                    {{ form.purpose|as_crispy_field }}
+                </div>
+            </div>
+
+            <!-- Part 2 -->
+            <hr>
+            <h1>Part II</h1>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ form.reasons|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    {{ form.plans|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form.transferring_school|as_crispy_field }}
+                </div>
+                <div class="col-md-6">
+                    {{ form.transferring_strand|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    {{ form.comments|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock%}

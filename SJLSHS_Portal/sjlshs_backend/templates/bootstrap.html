@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <a class="navbar-brand" href="#">SJLSHS</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <h1>Hello there!</h1>
+            <button class="btn btn-secondary">Click Me!</button>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary btn-block aria-pressed='true'">Another Button!</button>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-outline-primary">Outline of A Button</button>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-outline-secondary btn-sm">Small Button</button>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-secondary btn-lg btn-block">Large Button</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="../static/images/tvl_track.png">
+                    <div class="card-body">
+                        <h5 class="card-title">Headline</h5>
+                        <p class="card-text">This is some text...</p>
+                        <button class="btn btn-outline-primary">See More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card w-100 bg-light text-dark">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img class="img-fluid rounded-start" src="../static/images/tvl_track.png">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">This is a title</h5><hr>
+                                <p class="card-text">Some text...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">WebSiteName</a>
+          </div>
+          <div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#">Page 1
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Page 1-1</a></li>
+                  <li><a href="#">Page 1-2</a></li>
+                  <li><a href="#">Page 1-3</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Page 2</a></li>
+              <li><a href="#">Page 3</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <h2>Tab with Dropdown Menu</h2>
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+              
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Tutorials <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">HTML</a></li>
+              <li><a href="#">CSS</a></li>
+              <li><a href="#">JavaScript</a></li>                        
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+
+      <div id="carouselIndicators" class="carousel slide carousel-fade" data-bs-ride="true">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <h1 class="news-inline">What's New?</h1>
+            <img src="{% static 'images/galaw-pilipinas.jpg'%}" class="d-block w-100" alt="..." height="600px">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Galaw Pilipinas Day in SJLSHS</h5>
+                <p>Some representative text....</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/bkd-week.jpg'%}" class="d-block w-100" alt="..." height="600px">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Barkada Kontra Droga Week</h5>
+                <p>Some representative text....</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/un-pageant.jpg'%}" class="d-block w-100" alt="..." height="600px">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>United Nations Pageant</h5>
+                <p>Some representative text....</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</body>
+</html>

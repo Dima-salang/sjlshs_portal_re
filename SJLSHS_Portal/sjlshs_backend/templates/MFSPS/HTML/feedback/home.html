@@ -1,0 +1,55 @@
+{% extends 'portal-base.html' %}
+
+{% block content %}
+<div class="content-wrapper">
+  <div class="container py-5">
+    <div class="row">
+      <h1 class="text-center display-3">Provide Feedback</h1>
+      {% if messages %}
+      <div class="col-12 mb-4">
+        {% for message in messages %}
+        <div class="alert alert-dismissible fade show alert-{{ message.tags }}" role="alert">
+          <span class="fw-bold">{{ message.tags }}:</span> {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div class="alert alert-primary">
+        <p class="lead">Your feedback not only helps teachers improve their teaching skills, but it also provides
+          valuable information for the school to enhance its educational programs. Your feedback can impact not just
+          your own learning experience, but also the experience of future students. By sharing your thoughts, you have
+          the power to shape the future of our school and create a better learning environment for everyone. Your voice
+          matters, so don't hesitate to share your feedback today!</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Teacher Feedback</h5>
+            <p class="card-text mb-4">Provide feedback for your teacher's performance.</p>
+            <a href="{% url 'teacher-feedback' %}" class="btn btn-primary px-4 rounded-pill">Leave Feedback</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Facilities Feedback</h5>
+            <p class="card-text mb-4">Provide feedback for the school's facilities.</p>
+            <a href="#" class="btn btn-primary px-4 rounded-pill">Leave Feedback</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow">
+          <div class="card-body">
+            <h5 class="card-title mb-3">School Experience Feedback</h5>
+            <p class="card-text mb-4">Provide feedback for your overall school experience.</p>
+            <a href="{% url 'school-experience-feedback'%}" class="btn btn-primary px-4 rounded-pill">Leave Feedback</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

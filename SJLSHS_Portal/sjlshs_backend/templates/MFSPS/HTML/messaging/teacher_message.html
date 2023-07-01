@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extrahead %}
+<script src="{% static 'CSS\bootstrap-5.2.2-dist\bootstrap-5.2.2-dist\js\bootstrap.bundle.js' %}"></script>
+
+<script src="{% static 'CSS/jquery-3.6.4.min.js'%}"></script>
+{% endblock %}
+
+{% block content %}
+{% if not toast_shown %}
+<div class="toast-container position-fixed top-0 start-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+    <div class="toast-header bg-primary">
+        <strong class="text-white">Note!</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        <strong class="me-auto">Messaging Netiquette Guidelines:</strong>
+
+        <p>Please be guided by the following guidelines in using the messaging system.
+        Failure to obey the guidelines may incur penalties to you.</p>
+
+        <ul>
+            <li>Be clear and concise in your messages.</li>
+            <li>Use proper grammar and punctuation to avoid confusion.</li>
+            <li>Respect others' time by keeping your messages brief and to the point.</li>
+            <li>Use appropriate language and tone.</li>
+            <li>Avoid using all caps or excessive exclamation points, as it can be perceived as shouting.</li>
+            <li>Do not send spam messages or forward chain messages.</li>
+            <li>Respond to messages in a timely manner.</li>
+            <li>Do not share confidential or sensitive information without permission.</li>
+            <li>Avoid sending messages when you are emotional or upset.</li>
+            <li>Always be respectful!</li>
+        </ul>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="content-wrapper">
+    <h1 class="text-2xl font-bold mb-4 text-center display-4">Messages Inbox</h1>
+    <div class="text-center mb-2">
+        <button class="btn btn-primary"><a href="{% url 'teacher_message_create'%}" class="text-white text-decoration-none">Write a Message</a></button>
+        <button class="btn btn-primary"><a href="{% url 'teacher_sent'%}" class="text-white">View Sent Messages</a></button>
+    </div>
+   
+    {% if object_list %}
+    <table class="table table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>Sender</th>
+                <th>Subject</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message in object_list %}
+            <a href="{% url 'message_detail' message.id %}"><tr class="clickable-row" data-href="{% url 'message_detail' message.id %}">
+                <td>{{ message.sender.username }}</td>
+                <td>{{ message.subject }}</td>
+                <td>{{ message.created_at|date:"F d, Y" }}</td>
+            </tr>
+            </a>
+        {% empty %}
+            <tr>
+                <td colspan="3">No messages.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No messages.</p>
+    {% endif %}
+</div>
+
+<script>
+    // Make table rows clickable
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#liveToast').toast('show');
+    });
+</script>
+{% endblock %}

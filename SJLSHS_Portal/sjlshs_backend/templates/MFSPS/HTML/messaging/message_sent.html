@@ -1,0 +1,46 @@
+{% extends 'portal-base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="content-wrapper">
+    <h1 class="text-2xl font-bold mb-4">Sent Messages</h1>
+    <button class="btn btn-primary"><a href="{% url 'message-create'%}" class="text-white text-decoration-none">Write a
+            Message</a></button>
+    {% if object_list %}
+    <table class="table table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>Recipient</th>
+                <th>Subject</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for message in object_list %}
+            <a href="{% url 'message_detail' message.id %}">
+                <tr class="clickable-row" data-href="{% url 'message_detail' message.id %}">
+                    <td>{{ message.recipient.username }}</td>
+                    <td>{{ message.subject }}</td>
+                    <td>{{ message.created_at|date:"F d, Y" }}</td>
+                </tr>
+            </a>
+            {% empty %}
+            <tr>
+                <td colspan="3">No messages.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No messages.</p>
+    {% endif %}
+</div>
+<script src="{% static 'CSS/jquery-3.6.4.min.js'%}"></script>
+<script>
+    // Make table rows clickable
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+</script>
+{% endblock %}

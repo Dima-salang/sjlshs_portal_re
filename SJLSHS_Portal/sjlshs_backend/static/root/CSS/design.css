@@ -1,0 +1,898 @@
+body, html {
+    margin: 0 0 0 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#home-navigation a {
+    color: white;
+}
+
+#drpdown-menu a {
+    color: black;
+}
+
+
+#col-school-logo {
+    background-image: url(../images/sch-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+
+}
+
+#bg-title {
+  margin: 40px auto 80px auto;
+  color: white;
+  text-align: center;
+  font-size: 3rem;
+  font-family: 'Merriweather', serif;
+  text-shadow: 10px 10px 10px black;
+}
+
+
+@media (max-width: 768px) {
+  /* Styles for mobile devices */
+  #bg-title {
+    font-size: 1.5rem; /* Smaller font size for mobile devices */
+  }
+}
+
+#news {
+    background-color: #99cfe0;
+    padding: 60px 0;
+  }
+  
+  
+  #news p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #666;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+
+
+
+
+
+
+#home-btn {
+    position: absolute;
+    top: 70%;
+    left: 46%;
+    transition: opacity 1s ease, box-shadow 0.5s, padding 0.5s;
+}
+
+#home-btn button:hover {
+    box-shadow: 5px 5px 5px black;
+    padding: 10px 10px 10px 10px;
+    opacity: 0.8;
+}
+
+#announcements {
+background-color: #f9f9f9;
+
+}
+
+#school-announcements {
+    font-size: 60px;
+    font-weight: 800;
+    font-family: 'Merriweather', serif;
+}
+
+#announcement-carousel {
+margin-top: 30px;
+border: 2px solid #f9f9f9;
+  border-radius: 50px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.announcement-card {
+    background-color: #fff;
+border: 2px solid #f9f9f9;
+  border-radius: 50px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+transition: all 0.3s ease-in-out;
+box-sizing: border-box;
+}
+
+
+
+
+.announcement-title {
+font-size: 32px;
+font-weight: bold;
+margin-bottom: 10px;
+}
+
+.announcement-meta {
+color: #999999;
+font-size: 16px;
+margin-bottom: 20px;
+}
+
+.announcement-snippet {
+font-size: 18px;
+margin-bottom: 20px;
+}
+
+.btn-primary {
+background-color: #3a78c3;
+border: none;
+border-radius: 30px;
+color: white;
+font-weight: bold;
+padding: 12px 32px;
+transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+background-color: #2357a3;
+}
+
+.carousel-control-prev, .carousel-control-next {
+background-color: black;
+border-radius: 30px;
+height: 50px;
+margin: 100px -40px;
+width: 50px;
+z-index: 1;
+
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+height: 30px;
+width: 30px;
+}
+
+.carousel-control-prev-icon::before, .carousel-control-next-icon::before {
+color: black;
+font-size: 30px;
+}
+
+.carousel-indicators li {
+background-color: black;
+border: none;
+border-radius: 50%;
+height: 12px;
+margin: 0 5px;
+width: 12px;
+}
+
+.carousel-indicators .active {
+background-color: black;
+}
+
+
+.carousel-item {
+    height: 370px;
+}
+
+.carousel-item:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+  }
+
+#news-head {
+    font-size: 54px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+#news-h1 {
+    font-size: 60px;
+    font-weight: 800;
+    font-family: 'Merriweather', serif;
+}
+
+#news-descrip {
+    font-size: 30px;
+}
+
+
+.news-inline {
+    position: absolute;
+    float:right;
+}
+
+.carousel-item-active {
+    box-shadow: inset 50px 0px 10px 10px black;
+}
+
+
+@media screen and (min-width: 476px) {
+    .portal-box {
+        grid-template-rows: 1fr 1fr 1fr;
+        margin-right: 20%;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 50px 20px 100px 20px;
+    }
+}
+
+#student-portal {
+    background-image: url("../images/portal-collage.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.portal-box {
+    grid-template-rows: 1fr 1fr 1fr;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 50px 20px 100px 20px;
+}
+
+#btn-portal {
+    margin-top: 20px;
+}
+
+#btn-portal2 {
+    margin-top: 20px;
+}
+
+#portal-redirect-bg {
+    background-image: url('../images/portal-bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+#stem-title, #humss-title, #abm-title, #tvl-title {
+    font-size: 50px;
+}
+
+#tracks-card1 {
+    background-image: linear-gradient(to right, #8360c3, #2ebf91);
+    margin-top: 0;
+}
+
+#tracks-card2 {
+    background-image: linear-gradient(-20deg, #00cdac 0%, #8ddad5 100%);
+}
+
+#club2, #club3, #club4, #club5 {
+    width: 25%;
+}
+
+#club2, #club4 {
+    margin-left: auto;
+}
+
+#club3, #club5 {
+    margin-right: auto;
+}
+
+#sch-orgs-head {
+    font-weight: bold;
+    font-size: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+  #sch-orgs-subtitle {
+    font-size: 1.5rem;
+    color: #777;
+    margin-bottom: 4rem;
+  }
+  .hover-img {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .hover-img img {
+    width: 100%;
+    height: auto;
+  }
+  .hover-img figcaption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+  }
+  .hover-img h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  .hover-img:hover figcaption {
+    opacity: 1;
+  }
+  #club1 {
+    grid-column: 1 / 4;
+  }
+  #club2 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+  }
+  #club3 {
+    grid-column: 3 / 4;
+    grid-row: 2 / 4;
+  }
+  #club4 {
+    grid-column: 1 / 2;
+    grid-row: 4 / 6;
+  }
+  #club5 {
+    grid-column: 3 / 4;
+    grid-row: 4 / 6;
+  }
+  @media only screen and (min-width: 768px) {
+    #sch-orgs-head {
+      font-size: 4rem;
+    }
+    #sch-orgs-subtitle {
+      font-size: 2rem;
+    }
+    .hover-img h3 {
+      font-size: 2rem;
+    }
+  }
+
+/* .hover-img {
+    background-color: #000;
+    color: #fff;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 50%;
+  }
+
+  
+  .hover-img * {
+    box-sizing: border-box;
+    transition: all 0.45s ease;
+  }
+  
+  .hover-img::before,
+  .hover-img::after {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-top: 32px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 32px solid rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    transition: all 0.3s ease;
+    z-index: 1;
+    opacity: 0;
+    transform: scaleY(2);
+  }
+  
+  .hover-img img {
+    vertical-align: top;
+    max-width: 100%;
+    backface-visibility: hidden;
+  }
+  
+  .hover-img figcaption {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.1em;
+    opacity: 0;
+    z-index: 2;
+    transition-delay: 0.1s;
+    font-size: 24px;
+    font-family: sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  .hover-img:hover::before,
+  .hover-img:hover::after {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .hover-img:hover > img {
+    opacity: 0.7;
+  }
+  
+  .hover-img:hover figcaption {
+    opacity: 1;
+  }
+
+#sch-orgs-head {
+    font-size: 60px;
+    font-weight: 800;
+    font-family: 'Merriweather', serif;
+    margin-top: 50px;
+}
+
+#sch-orgs-subtitle {
+    font-size: 30px;
+} */
+
+#yes-o_logo {
+    margin-left: 50px;
+}
+
+#yrc-logo {
+   
+    margin-left: 50px;
+}
+
+#bkd-logo {
+    
+    margin-left: 50px;
+}
+
+#ac_logo {
+    margin-left: 50px;
+}
+
+
+
+#tracks-strands img{
+    margin: 20px 20px 20px 0;
+}
+
+#tracks-strands h1{
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
+    font-size: 60px;
+    margin-top: 50px;
+}
+
+
+
+#tvl-subtitle, #stem-subtitle,
+#humss-subtitle, #abm-subtitle {
+    text-shadow: 5px 5px 10px black;
+}
+
+#tvl-description, #stem-description,
+#abm-description, #humss-description {
+    text-shadow: 3px 3px 10px black;
+}
+
+
+#offerings-subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+}
+
+.enrollment-process h1 {
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
+    font-size: 60px;
+    margin-top: 50px;
+}
+
+#enrollment-subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+}
+
+
+#about-school-img {
+    object-fit: cover;
+    width: 700px;
+    height: 500px;
+}
+
+#about-school-h1{
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
+    font-size: 56px;
+    margin-top: 20px;
+}
+
+#contacts {
+    background-color: #073b4c;
+    color: whitesmoke;
+    text-align: center;
+}
+
+#contacts h1{
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+#contacts p {
+    margin-left: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+}
+
+
+
+/* REGISTRATION.HTML CSS */
+
+
+.reg-title {
+    text-align: center;
+}
+
+.register-page {
+    background-image: url("../images/school-bg-blurred.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.reg-box {
+    grid-template-rows: 1fr 1fr 1fr;
+    border: 1px solid black;
+    border-radius: 10px 10px;
+    margin: 50px 20% 20% 20%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px 20px 20px 20px;
+}
+
+
+/* SIGNUP-REDIRECT */
+
+#signup-redirect-body {
+  background-image: url("../images/portal-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+/* LOGIN-REDIRECT */
+
+
+
+/* #portal-redirect-body {
+    background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
+    background-attachment: fixed;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#login-redirect-title {
+    font-family: 'Merriweather', serif;
+    color: white;
+    font-weight: 800;
+    font-size: 60px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-shadow: 5px 5px 10px black;
+}
+
+#login-redirect a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#redirect-announcements,
+#redirect-dashboard,
+#redirect-info,
+#redirect-modules,
+#redirect-sched,
+#redirect-grades {
+    margin-bottom: 100px;
+    border-radius: 15px;
+    box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+    transition: 0.5s ease-in-out
+}
+
+#redirect-announcements:hover {
+    background-color:#0c3483;
+    color: white;
+}
+#redirect-dashboard:hover {
+    background-color:#0c3483;
+    color: white;
+}
+#redirect-info:hover {
+    background-color:#0c3483;
+    color: white;
+}
+#redirect-modules:hover {
+    background-color:#0c3483;
+    color: white;
+}
+#redirect-sched:hover {
+    background-color:#0c3483;
+    color: white;
+}
+#redirect-grades:hover {
+    background-color:#0c3483;
+    color: white;
+} */
+
+
+#login-menu-body {
+    background-color: #f1faff;
+  }
+
+#login-menu-body a {
+    text-decoration: none;
+}
+
+  
+  #login-image img {
+    width: 100%;
+    height: 100%;
+    
+  }
+  
+  #login-menu-container {
+    display:flex;
+    flex-direction: row;
+  justify-content: flex-end;
+    float: right;
+    height: 100%;
+  }
+
+  #login-menu-card-body {
+    height: 100%;
+  }
+  
+
+
+  #dashboard-card {
+    background-color: #ecf4ff;
+    padding: 1.2rem;
+    text-decoration: none;
+  }
+  
+  #dashboard-title {
+    color: #1886d9;
+    
+  }
+  
+  #announcements-card {
+    background-color: #ecf4ff;
+    padding: 1.2rem;
+    text-decoration: none;
+  }
+  
+  #announcements-title {
+    color: #1886d9;
+  }
+  
+  #master-file-card {
+    background-color: #ecf4ff;
+    padding: 1.2rem;
+    text-decoration: none;
+  }
+  
+  #master-file-title {
+    color: #1886d9;
+  }
+  
+  #module-repository-card {
+    background-color: #ecf4ff;
+    padding: 1.2rem;
+    text-decoration: none;
+  }
+  
+  #module-repository-title {
+    color: #1886d9;
+  }
+  
+  #schedule-card {
+    background-color: #ecf4ff;
+    padding: 1.2rem;
+    text-decoration: none;
+  }
+  
+  #schedule-title {
+    color: #1886d9;
+  }
+  
+  #evaluation-card {
+    background-color: #ecf4ff;
+    padding: 1.2rem;
+    text-decoration: none;
+  }
+  
+  #evaluation-title {
+    color: #1886d9;
+  }
+
+
+
+/* PORTAL-HOME.HTML CSS */
+
+
+
+#dashboard-header-card {
+    border-radius: 15px;
+    box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+#dashboard-grades {
+    border-radius: 15px;
+    box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+    margin-top: 20px;
+}
+
+#dashboard-student-info {
+    border-radius: 15px;
+    box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+    margin-top: 20px;
+}
+
+#dashboard-grades2 {
+    border-radius: 15px;
+    box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+#post-cards {
+    margin-bottom: 0;
+    border-radius: 15px;
+    box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.w-95 {
+    width: 95%;
+}
+
+.w-45 {
+    width: 45%;
+}
+
+.w-35 {
+    width: 35%;
+}
+
+.portal-bg {
+    background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
+    background-attachment: fixed;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+#portal-menu {
+    background-color: #03045e;
+    color: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#portal-menu a {
+    text-decoration: none;
+    color: whitesmoke;   
+}
+
+#portal-menu ul {
+    list-style: none;
+}
+
+#portal-menu h2 {
+    margin-bottom: 50px;
+    margin-top: 50px;
+    font-family: 'Merriweather', serif;
+}
+
+
+/* PORTAL GRADES */
+
+#portal-grades-row1 {
+    height: 100%;
+    display: flex;
+}
+
+#portal-grades-col1 {
+    height: 100%;
+}
+
+#portal-info-row1 {
+    height: 100%;
+    display: flex;
+}
+
+#portal-announcements-row1 {
+    height: 100%;
+    display: flex;
+}
+
+
+
+
+/* PORTAL-SCHED */
+#sched-image {
+    width: 1000px;
+}
+
+#portal-sched-row1 {
+    height: 100%;
+    display: flex;
+}
+
+
+/* PORTAL-MODULE-REDIRECT */
+
+#module-heading {
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
+    font-size: 60px;
+    margin-top: 50px;
+}
+
+#module-subtitle {
+    font-size: 30px;
+}
+
+/* PORTAL-MODULE */
+
+#module-book {
+    object-fit: contain;
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="{% static 'CSS/design.css' %}">
+  <link rel='stylesheet' href="{% static 'CSS/bootstrap-5.2.2-dist/bootstrap-5.2.2-dist/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static '/admin-lte/plugins/fontawesome-free/css/all.min.css' %}">
+  <script src="{% static 'CSS\bootstrap-5.2.2-dist\bootstrap-5.2.2-dist\js\bootstrap.bundle.js' %}"></script>
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static '/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static '/admin-lte/dist/css/adminlte.min.css'%}">
+
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/sjlshs_favicon.png' %}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+  {% block extrahead %}
+  {% endblock %}
+  
+  {% block title %}
+  <title>Document</title>
+  {% endblock %}
+</head>
+
+
+
+
+
+<body class="layout-fixed">
+  <div class="wrapper">
+    <div class="sidebar-wrapper">
+
+
+
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="{% url 'home'%}" class="brand-link">
+          <img src="{% static '/images/sjlshs_croppedV4.png'%}" alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3" style="opacity: 0.8" />
+          <span class="brand-text font-weight-light">SJLSHS MAPS</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="info">
+              <a href="{% url 'portal-personal'%}" class="d-block text-center">
+                <h3>Hello, {{user.first_name}}</h3>
+              </a>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+              <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+              <li class="nav-item menu-open">
+              <li class="nav-item">
+                <a href="{% url 'portal-personal'%}"
+                  class="nav-link {% if request.path == '/portal-personal/'%} active {% endif %}">
+                  <i class="far fas fa-user"></i>
+                  <p>Master File</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                {% if user.enrollment_status == "Irregular" %}
+                <a href="{% url 'irregular-grades'%}"
+                  class="nav-link {% if request.path == '/irregular/grades/'%} active {% endif %}">
+                  <i class="far fas fa-chart-line"></i>
+                  <p>Evaluation</p>
+                </a>
+                {% elif user.grade_year == "11" %}
+                <a href="{% url 'portal-grade11'%}"
+                  class="nav-link {% if request.path == '/grades/portal-grades/11/'%} active {% endif %}">
+                  <i class="far fas fa-chart-line"></i>
+                  <p>Evaluation</p>
+                </a>
+                {% elif user.grade_year == "12" %}
+                <a href="{% url 'portal-grade'%}"
+                  class="nav-link {% if request.path == '/grades/portal-grades/12/'%} active {% endif %}">
+                  <i class="far fas fa-chart-line"></i>
+                  <p>Evaluation</p>
+                </a>
+                {% endif %}
+
+                </a>
+              </li>
+
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'portal-announcements'%}"
+                  class="nav-link {% if request.path == '/portal-announcements'%} active {% endif %}">
+                  <i class="far fas fa-bullhorn"></i>
+                  <p>
+                    Announcements
+                  </p>
+                </a>
+                <span id="new-announcement-badge" class="badge badge-danger" style="display:none;"></span>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'portal-modules-filter'%}"
+                  class="nav-link {% if request.path == '/portal-module-redirect'%} active {% endif %}">
+                  <i class="far fas fa-book"></i>
+                  <p>Module Repository</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'portal-sched'%}"
+                  class="nav-link {% if request.path == '/portal-sched/'%} active {% endif %}">
+                  <i class="far fas fa-calendar-alt"></i>
+                  <p>Schedule</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'message-inbox'%}"
+                  class="nav-link {% if request.path == '/messages/inbox/'%} active {% endif %}">
+                  <i class="far fas fa-envelope"></i>
+                  <p>Messages</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'career-center'%}"
+                  class="nav-link {% if request.path == '/career-center/'%} active {% endif %}">
+                  <i class="far fas fa-briefcase"></i>
+                  <p>Career Center</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'feedback_home'%}"
+                  class="nav-link {% if request.path == '/feedback/home/'%} active {% endif %}">
+                  <i class="far fas fa-comment-alt"></i>
+                  <p>Feedback</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'orgs-apply-home'%}"
+                  class="nav-link {% if request.path == '/org_apply/apply-home/'%} active {% endif %}">
+                  <i class="far fas fa-file-export"></i>
+                  <p>Applications</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'request_view'%}"
+                  class="nav-link {% if request.path == '/form_requests/requests/'%} active {% endif %}">
+                  <i class="far fas fa-hand-paper"></i>
+                  <p>Requests</p>
+                </a>
+              </li>
+              
+              
+
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">
+                  <i class="bi bi-box-arrow-right"></i>
+                  Logout
+                </a>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+  {% block content %} {% endblock %}
+
+  <!-- jQuery -->
+  <script src="{% static '/admin-lte/plugins/jquery/jquery.min.js' %}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{% static '/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- overlayScrollbars -->
+  <script src="{% static '/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+  <!-- AdminLTE App -->
+  <script src="{% static '/admin-lte/dist/js/adminlte.min.js' %}"></script>
+
+  <script src="{% static 'CSS/jquery-3.6.4.min.js'%}"></script>
+</body>
+
+</html>

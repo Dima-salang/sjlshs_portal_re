@@ -1,0 +1,26 @@
+{% extends "two_factor/_base_focus.html" %}
+{% load i18n %}
+
+{% block content %}
+<body class="register-page">
+<div class="reg-box">
+  <h1 class="text-center">{% block title %}{% trans "You are now authenticated!" %}{% endblock %}</h1>
+
+  <p class="text-center">{% blocktrans trimmed %}You can now proceed to MAPS.{% endblocktrans %}</p>
+
+  {% if not phone_methods %}
+      <div class="proceed-box text-center">
+        <a href="{% url 'login-redirect'%}"><button class="btn btn-outline-primary">Proceed to MAPS</button></a>
+      </div>
+        
+  {% else %}
+    <p>{% blocktrans trimmed %}However, it might happen that you don't have access to
+      your primary token device. To enable account recovery, add a phone
+      number.{% endblocktrans %}</p>
+
+    <p><a href="{% url 'two_factor:phone_create' %}"
+        class="btn btn-success">{% trans "Add Phone Number" %}</a></p>
+  {% endif %}
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  {% block title %}
+  <title>{{self.title}}</title>
+  {% endblock %}
+</head>
+
+<body>
+  {% block content %}
+  {% if self.feed_image %}
+  <div class="container-fluid">
+    <div class="row" id="row-2-school-logo">
+      <div class="col-lg-6 bg-dark px-0">
+        <h1 class="lead text-white mx-3 my-5">{{self.date}}</h1>
+        <h1 class="display-2 text-white mx-3 my-5">{{self.title}}</h1>
+      </div>
+      <div class="col-lg-6 px-0 bg-dark">
+        {% image self.feed_image fill-1980x1000 class="mx-auto d-block img-fluid" %}
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="container-fluid">
+    <div class="row" id="row-2-school-logo">
+      <div class="col-lg-12 bg-dark px-0">
+        <h1 class="display-6 text-white mx-3 my-3">{{self.date}}</h1>
+        <h1 class="display-2 text-white mx-3 my-3">{{self.title}}</h1>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+
+    <div class="container mt-5">
+      <div class="row" id="body-text">
+        <div class="col-md-8">
+          <p class="body-text">{{ self.body|richtext }}</p>
+        </div>
+        <div class="col-md-2 mb-4 order-lg-first">
+          <div class="list-group">
+            <h5 class="list-group-item list-group-item-action active" aria-current="true">Recent Announcements</h5>
+            {% for announcement_article in self.get_recent_announcements %}
+            <a href="{{ announcement_article.url }}"
+              class="list-group-item list-group-item-action">{{announcement_article.title }}</a>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="list-group mb-4">
+            <h5 class="list-group-item list-group-item-action active" aria-current="true">Recent News</h5>
+            {% for news_article in self.get_recent_news %}
+            <a href="{{ news_article.url }}" class="list-group-item list-group-item-action">{{ news_article.title }}</a>
+            {% endfor %}
+          </div>
+          <div class="list-group mb-4">
+            <h5 class="list-group-item list-group-item-action active" aria-current="true">Recent Events</h5>
+            {% for event_article in self.get_recent_events %}
+            <a href="{{ event_article.url }}" class="list-group-item list-group-item-action">
+              {{event_article.title}}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    {% endblock %}
+</body>
+
+</html>

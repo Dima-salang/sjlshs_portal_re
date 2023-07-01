@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+    {% block title %}
+    <title>Section Attendance</title>
+    {% endblock %}
+    <!-- Include Bootstrap CSS -->
+</head>
+{% block content }
+    {% for student_section in section%}
+    <div class="container">
+        <h1>{{ section.name }} Attendance</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.attendance.date }}</td>
+                    <td>{{ student.attendance.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+{% endblock %}

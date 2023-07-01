@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+
+{% block content %}
+<div class="container">
+  <h1 class="text-center my-5">{{faculty_staff.title}}</h1>
+  <div class="row">
+   <div class="col">
+    {{faculty_staff.body|richtext}}
+   </div>
+  </div>
+</div>
+
+{% endblock %}

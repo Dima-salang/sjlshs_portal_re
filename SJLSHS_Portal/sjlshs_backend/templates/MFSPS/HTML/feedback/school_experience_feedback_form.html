@@ -1,0 +1,177 @@
+{% extends 'portal-base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="content-wrapper">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-md-10">
+        <h2 class="mb-4 display-5 text-center">School Experience Feedback Form</h2>
+        <div class="alert alert-info">
+            Note: all fields that have asterisks(*) beside them are required.
+        </div>
+        {% if messages %}
+        <div class="container">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form method="post">{% csrf_token %}
+            <div class="card">
+                <div class="card-header bg-primary">
+                    <h4 class="display-6">Cleanliness and Maintenance</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    {{ form.cleanliness_and_maintenance_facilities_cleanliness|as_crispy_field }}
+                                    <label class="text-muted">The school facilities are clean and well-maintained.</label>
+                                </div>
+                                <div class="form-group">
+                                    {{ form.cleanliness_and_maintenance_school_grounds_appearance|as_crispy_field }}
+                                    <label class="text-muted">School Grounds Appearance*</label>
+                                </div>
+                                
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    {{ form.cleanliness_and_maintenance_building_equipment_maintenance|as_crispy_field }}
+                                    <label class="text-muted">Building and Equipment Maintenance*</label>
+                                </div>
+                                <div class="form-group">
+                                    {{ form.cleanliness_and_maintenance_bathroom_maintenance|as_crispy_field }}
+                                    <label class="text-muted">Bathroom Maintenance*</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header display-6 bg-primary">Safety and Security</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form.safety_and_security_safe_environment|as_crispy_field }}
+                                <label class="text-muted">Safe Environment*</label>
+                            </div>
+                            <div class="form-group">
+                                {{ form.safety_and_security_safety_measures|as_crispy_field }}
+                                <label class="text-muted">Safety Measures*</label>
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form.safety_and_security_response_to_safety_concerns|as_crispy_field }}
+                                <label class="text-muted">Response to Safety Concerns*</label>
+                            </div>
+                            <div class="form-group">
+                                {{ form.safety_and_security_communication_of_safety_procedures|as_crispy_field }}
+                                <label class="text-muted">Communication of Safety Procedures*</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header display-6 bg-primary">Service and Support</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form.service_and_support_friendly_staff|as_crispy_field }}
+                                <label class="text-muted"></label>
+                            </div>
+                            <div class="form-group">
+                                {{form.service_and_support_support_services_for_students|as_crispy_field}}
+                                <label class="text-muted"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form.service_and_support_parent_communication|as_crispy_field }}
+                                <label class="text-muted"></label>
+                            </div>
+                            <div class="form-group">
+                                {{form.service_and_support_appropriate_resources_for_students|as_crispy_field}}
+                                <label class="text-muted"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header display-6 bg-primary">Academic Experience</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form.academic_experience_challenging_program|as_crispy_field }}
+                                <label class="text-muted"></label>
+                            </div>
+                            <div class="form-group">
+                                {{form.academic_experience_extracurricular_activities|as_crispy_field}}
+                                <label class="text-muted"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form.academic_experience_effective_communication|as_crispy_field }}
+                                <label class="text-muted"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header display-6 bg-primary">Overall Experience</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form.overall_experience_positive_experience|as_crispy_field }}
+                                <label class="text-muted"></label>
+                            </div>
+                            <div class="form-group">
+                                {{form.overall_experience_quality_education|as_crispy_field}}
+                                <label class="text-muted"></label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form.overall_experience_diversity_and_inclusion|as_crispy_field }}
+                                <label class="text-muted"></label>
+                            </div>
+                            <div class="form-group">
+                                {{form.overall_experience_recommendation_to_others|as_crispy_field}}
+                                <label class="text-muted"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-lg btn-primary mb-3">Submit</button>
+              </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}
+                        
+                        
+                        

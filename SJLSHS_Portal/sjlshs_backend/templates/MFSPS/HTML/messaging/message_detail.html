@@ -1,0 +1,70 @@
+{% extends 'portal-base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card border-0 shadow-sm mt-4">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="text-white display-5">{{ message.subject }}</h2>
+                    <p class="mb-0">From: {{ message.sender.username }}</p>
+                    <p class="mb-0">To: {{ message.recipient.username }}</p>
+                    <p class="mb-0">Date: {{ message.created_at|date:"M d, Y" }}</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text lead">{{ message.body|safe }}</p>
+                </div>
+                
+                <div class="card-footer">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#replyModal">Reply</button>
+                </div>
+                
+            </div>
+            {% if replies %}
+            <div class="mt-4">
+                <h4>Replies:</h4>
+                {% for reply in replies %}
+                <div class="card border-0 shadow-sm my-3">
+                    <div class="card-header bg-secondary text-white">
+                        <p class="mb-0">From: {{ reply.sender.username }}</p>
+                        <p class="mb-0">To: {{ reply.recipient.username }}</p>
+                        <p class="mb-0">Date: {{ reply.created_at|date:"M d, Y" }}</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text lead">{{ reply.body|safe }}</p>
+                    </div>
+                    <div class="card-footer">
+                      <button class="btn btn-primary" data-toggle="modal" data-target="#replyModal">Reply</button>
+                    </div>
+                </div>
+                {% endfor %}
+              {% endif %}
+        </div>
+    </div>
+</div>
+<!-- Reply Modal -->
+<div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <form method="post" action="{% url 'message_detail' message.id %}">
+          {% csrf_token %}
+          <div class="modal-header">
+            <h5 class="modal-title" id="replyModalLabel">Reply to {{ message.sender.username }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            {{ form|crispy }}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+{% extends 'portal-base.html' %}
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {%block title%}
+  <title>Student Information</title>
+  {%endblock%}
+</head>
+
+<body>
+  {% block content %}
+  <div class="content-wrapper" id="portal-personal-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center mb-5 display-4">Student Master File</h1>
+        <div class="card mb-3 mx-2">
+          <div class="card-header bg-danger text-white">
+            <span><i class="fas far fa-sticky-note"></i>
+              <h4 class="ml-1" style="display: inline-block;">Note</h4>
+            </span>
+
+          </div>
+          <div class="card-body">
+            <p class="text-center">The student master file is a component of MAPS that stores all relevant
+              information about a student, including their personal details such as name, date of birth, address,
+              and contact information. Additionally, it includes academic information such as the student's course
+              of study, section, and enrollment status. The student master file may also include information about
+              the student's attendance, grades, and other academic records. This file serves as a central database
+              for all student-related information and helps administrators and faculty members manage and track the
+              progress of each student.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card mb-5 mx-2">
+          <div class="card-header bg-primary text-white">
+            <span><i class="fas far fa-user"></i>
+              <h4 class="ml-1">Personal Information</h4>
+            </span>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Last Name</td>
+                  <td>{{ user.last_name }}</td>
+                </tr>
+                <tr>
+                  <td>First Name</td>
+                  <td>{{ user.first_name }}</td>
+                </tr>
+                <tr>
+                  <td>LRN</td>
+                  <td>{{ user.lrn }}</td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                  <td>Birthday</td>
+                  <td>{{ user.birthday }}</td>
+                </tr>
+                <tr>
+                  <td>Age</td>
+                  <td>{{ user.age }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card mb-5 mx-2">
+          <div class="card-header bg-primary text-white">
+            <i class="fas far fa-graduation-cap"></i>
+            <h4>School-Related Information</h4>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Grade Year</td>
+                  <td>{{ user.grade_year }}</td>
+                </tr>
+                <tr>
+                  <td>Strand</td>
+                  <td>{{ user.strand }}</td>
+                </tr>
+                <tr>
+                  <td>Section</td>
+                  <td>{{ user.section }}</td>
+                </tr>
+                <tr>
+                  <td>Room Number</td>
+                  <td>{{ user.section.room_num }}</td>
+                </tr>
+                <tr>
+                  <td>Section Adviser</td>
+                  <td>{{ user.section.section_adviser }}</td>
+                </tr>
+                <tr>
+                  <td>Adviser Contact Number</td>
+                  <td>{{ user.section.section_adviser.contact_num }}</td>
+                </tr>
+                <tr>
+                  <td>Adviser Email</td>
+                  <td>{{ user.section.section_adviser.email }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+{% extends 'portal-base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="content-wrapper">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-md-10">
+        <h2 class="mb-4 display-5 text-center">Teacher Feedback Form</h2>
+        <div class="alert alert-info">
+            Note: all fields that have asterisks(*) beside them are required.
+        </div>
+        
+        <p>Please rate the following aspects of the teacher's performance using the following scale:</p>
+        <p>1 - Poor</p>
+        <p>2 - Below Average</p>
+        <p>3 - Average</p>
+        <p>4 - Good</p>
+        <p>5 - Excellent</p>
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <div class="alert alert-danger">
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif%}>
+              {{message}}
+            </li>
+          </div>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <form method="post">{% csrf_token %}
+            <div class="form-group">
+                {{ form.feedback_teacher|as_crispy_field }}
+              </div>
+            <div class="card">
+                <div class="card-header bg-primary">
+                    <h4 class="display-6">Teaching Style and Method</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    {{ form.teaching_style|as_crispy_field }}
+                                    <label class="text-muted">The teacher effectively communicates the lesson objectives and expectations.</label>
+                                </div>
+                                <div class="form-group">
+                                    {{ form.learning_activities|as_crispy_field }}
+                                    <label class="text-muted">The teacher provides a variety of learning activities that cater to different learning styles.</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    {{ form.teaching_techniques|as_crispy_field }}
+                                    <label class="text-muted">The teacher uses appropriate teaching techniques and strategies that enhance student learning.</label>
+                                </div>
+                                <div class="form-group">
+                                    {{ form.instructions|as_crispy_field }}
+                                    <label class="text-muted">The teacher provides clear and concise instructions.</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header display-6 bg-primary">Classroom Management and Discipline</div>
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form.classroom_management|as_crispy_field }}
+                            <label class="text-muted">The teacher effectively manages the classroom and maintains a positive learning environment.</label>
+                        </div>
+                        <div class="form-group">
+                            {{ form.fairness_consistency|as_crispy_field }}
+                            <label class="text-muted">The teacher is fair and consistent in enforcing rules and consequences.</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form.addressing_behavioral_issues|as_crispy_field }}
+                            <label class="text-muted">The teacher effectively addresses behavioral issues in a timely manner.</label>
+                          </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header display-6 bg-primary">Assessment and Feedback</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form.assessment_feedback|as_crispy_field }}
+                                <label class="text-muted">The teacher provides clear and constructive feedback on student performance.</label>
+                              </div>
+                              <div class="form-group">
+                                {{ form.self_reflection_assessment|as_crispy_field }}
+                                <label class="text-muted">The teacher provides opportunities for self-reflection and self-assessment.</label>
+                              </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form.assessment_techniques|as_crispy_field }}
+                                <label class="text-muted">The teacher uses a variety of assessment techniques that measure student learning.</label>
+                              </div>
+                              <div class="form-group">
+                                {{ form.student_support|as_crispy_field }}
+                                <label class="text-muted">The teacher is available to discuss student progress and provide additional support.</label>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+              <div class="card">
+                <div class="card-header display-6 bg-primary">Professionalism and Communication</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form.professionalism|as_crispy_field }}
+                                <label class="text-muted">The teacher demonstrates professionalism in all interactions with students, parents, and colleagues.</label>
+                              </div>
+                              <div class="form-group">
+                                {{ form.communication|as_crispy_field }}
+                                <label class="text-muted">The teacher communicates effectively with students, parents, and colleagues.</label>
+                              </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form.approachability_responsiveness|as_crispy_field }}
+                                <label class="text-muted">The teacher is approachable and responsive to concerns and questions.</label>
+                              </div>
+                              <div class="form-group">
+                                {{ form.professional_development|as_crispy_field }}
+                                <label class="text-muted">The teacher is committed to ongoing professional development and growth.</label>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+       
+          <div class="card">
+            <div class="card-header display-6 bg-primary">Comments</div>
+            <div class="card-body">
+                <div class="form-group">
+                    {{ form.additional_comments|as_crispy_field }}
+                  </div>
+            </div>
+          </div>
+          <div class="row">
+            <button type="submit" class="btn btn-lg btn-primary mb-3">Submit</button>
+          </div>
+          
+        </form>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+{% endblock %}

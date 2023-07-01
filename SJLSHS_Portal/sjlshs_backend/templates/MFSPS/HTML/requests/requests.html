@@ -1,0 +1,55 @@
+{% extends 'portal-base.html' %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="container py-5">
+        <div class="row">
+            <h1 class="text-center display-3">Requests</h1>
+            {% if messages %}
+            <div class="col-12 mb-4">
+                {% for message in messages %}
+                <div class="alert alert-dismissible fade show alert-{{ message.tags }}" role="alert">
+                    <span class="fw-bold">{{ message.tags }}:</span> {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="alert alert-primary">
+                <p class="lead">Be sure to only submit factual and true information. Any violation of the school's policy will be given a corresponding punishment.</p>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Request for Good Moral</h5>
+                        <p class="card-text text-muted">Good moral requests for college admissions and scholarships</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'good_moral'%}" role="button" class="btn btn-primary">Request</a>
+                    </div>
+                </div>
+            </div>
+            {% for form in requests %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">{{form.name}}</h5>
+                        <p class="card-text text-muted">{{form.description}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{form.file.url}}" role="button" class="btn btn-primary">View and Download</a>
+                    </div>
+                </div>
+            </div>
+            {% if empty %}
+            <div class="alert alert-primary">
+                <p class="lead">There are no requests available yet in the portal. Check later or get in touch with the administrator.</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

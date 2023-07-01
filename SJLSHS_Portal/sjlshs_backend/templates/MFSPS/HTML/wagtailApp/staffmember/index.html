@@ -1,0 +1,30 @@
+{% extends "wagtailmodeladmin/base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block title %}{{ model_admin.list_view_title }}{% endblock %}
+
+{% block content %}
+    <div class="wagtailmodeladmin-list">
+        <table class="listing">
+            <thead>
+                <tr>
+                    {% for field in view.get_list_display %}
+                        <th>{{ field }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in view.result_queryset %}
+                    <tr>
+                        {% for field in view.get_list_display %}
+                            <td>{{ view.get_field_display(field) }}</td>
+                        {% endfor %}
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="{{ view.get_list_display|length }}">No {{ model_admin.verbose_name_plural }} found.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

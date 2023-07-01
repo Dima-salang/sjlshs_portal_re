@@ -1,0 +1,112 @@
+{% extends 'portal-base.html' %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title%}
+<title>Career Center</title>
+{% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 mt-5 text-center">
+        <h2 class="text-center" id="school-events">Career Center</h2>
+        <p class="text-center mt-3" id="school-events-subtitle">The future of Litexians is bright! Check out the
+          schools that you can apply for as well as their offered courses and scholarships.
+        </p>
+        <div class="row justify-content-center">
+          <div class="card w-50">
+            <div class="card-body text-center">
+              <form method="GET">
+                {% csrf_token %}
+                <div class="form-row">
+                  <div class="form-group col-md-12 col-sm-12">
+                    {{ form|crispy}}
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Filter</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h1>Ongoing Enrollments</h1>
+          <div class="row">
+            {% for article in career_articles %}
+            {% if article.enrollment_period_start and article.enrollment_period_end %}
+            {% if article.enrollment_period_start <= datetime_now.date and datetime_now.date <= article.enrollment_period_end %}
+             
+            <div class="col-md-3">
+              <div class="card mb-4">
+                <div class="overlay">
+                  <a href="{{article.url}}">
+                    <h3>{{article.title}}</h3>
+                  </a>
+                </div>
+                {% image article.School_Image fill-400x400 class="card-img-top" %}
+              </div>
+          </div>
+          
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-12">
+        <h1>All Schools</h1>
+        <div class="row">
+          {% for article in career_articles %}
+           <div class="col-md-3">
+            <div class="card mb-4">
+              <div class="overlay">
+                <a href="{{article.url}}">
+                  <h3>{{article.title}}</h3>
+                </a>
+              </div>
+              {% image article.School_Image fill-400x400 class="card-img-top" %}
+            </div>
+        </div>
+        {%endfor%}
+      </div>
+      <div class="col-lg-12">
+        <h1>Test Reviewers</h1>
+        <div class="row">
+          {% for reviewer in reviewers %}
+           <div class="col-md-3">
+            <div class="card mb-4">
+              <div class="overlay">
+                <a href="{{reviewer.url}}">
+                  <h3>{{reviewer.title}}</h3>
+                </a>
+              </div>
+              {% image reviewer.feed_image fill-400x400 class="card-img-top" %}
+            </div>
+        </div>
+        {%endfor%}
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <h1>Scholarships</h1>
+        <div class="row">
+          {% for scholarship in scholarships %}
+           <div class="col-md-3">
+            <div class="card mb-4">
+              <div class="overlay">
+                <a href="{{scholarship.url}}">
+                  <h3>{{scholarship.title}}</h3>
+                </a>
+              </div>
+              {% image scholarship.feed_image fill-400x400 class="card-img-top" %}
+            </div>
+        </div>
+        {%endfor%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

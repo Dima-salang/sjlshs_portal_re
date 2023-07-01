@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body class="register-page">
+        {% block content %}
+        <div class="reg-box">
+            <div class="reg-title">
+                <h2>SJLSHS LOGIN</h2>
+            </div>
+            <div class="reg-forms">
+                <form method="post"> {% csrf_token %}
+                    
+                    {{ form|crispy }}
+                    <div class="form-group">
+                        <label for="{{ form.lrn.id_for_label }}">{{ form.lrn.label }}</label>
+                        {{ form.lrn }}
+                    </div>
+                    
+                    <input type="submit" value="Log in" class="btn btn-outline-primary"/>
+                </form>
+            </div>
+            <div class="reg-add-info">
+
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>

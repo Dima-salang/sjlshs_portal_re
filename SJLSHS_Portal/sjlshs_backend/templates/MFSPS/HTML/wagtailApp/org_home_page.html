@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'CSS/design.css' %}"/>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row" id="row-2-school-logo">
+    <div class="col" id="col-school-logo">
+      <img class="mx-auto d-block" id="orgs-sjlshs-logo" src="{% static 'images/sjlshs_croppedV4.png'%}">
+      <h1 id="bg-title" class="mx-auto d-block">{{page.title}}</h1>
+    </div>
+  </div>
+    
+  </div>
+</div>
+  <div class="container">
+    <div class="row text-center mt-5">
+      <div class="col-lg-6">
+        <h2 class="lead-1 text-center mt-4">{{page.title}}</h2>
+        <p class="lead-1 text-center mt-4">{{page.short_description}}</p>
+      </div>
+      <div class="col-lg-6">
+        {% image page.feed_image fill-300x300 class="img img-fluid"%}
+      </div>
+    </div>
+    <div class="row" id="body-text">
+      <div class="col-lg-8 offset-lg-2 col-sm-12">
+      <p class="body-text">{{page.body|richtext}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="text-center display-4 mt-5 mb-5">Announcements</h3>
+        <div class="list-group" id="org-home-page-list">
+          {% for announcement in self.get_announcements %}
+
+          <a href="{{ announcement.url }}" class="list-group-item list-group-item-action">
+            <h4 class="list-group-item-heading">{{ announcement.title }}</h4>
+            <p class="list-group-item-text">{{ announcement.date|date:"F j, Y" }}</p>
+            <p class="list-group-item-text">{{ announcement.body|truncatechars:255|richtext}}</p>
+          </a>
+          {% endfor %}
+        </div>
+        <h3 class="display-4 text-center mt-5 mb-5">News</h3>
+        <div class="row">
+          {% for news in self.get_news %}
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card w-100 h-100 mb-3">
+              {% image news.feed_image fill-400x400 class="card-img-top" %}
+              <div class="card-body">
+                <h5 class="card-title">{{ news.title }}</h5>
+                <p class="card-text">{{ news.body|richtext|truncatechars:200}}</p>
+              </div>
+              <div class="card-footer">
+                <a href="{{ news.url }}" class="btn btn-primary">Learn more</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <h3 class="display-4 text-center mt-5 mb-5">Events</h3>
+        <div class="row">
+
+          {% for event in self.get_events %}
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card mb-3">
+              {% image event.feed_image fill-400x400 class="card-img-top" %}
+              <div class="card-body">
+                <h5 class="card-title">{{ event.title }}</h5>
+                <p class="card-text">{{ event.body|richtext|truncatechars:200}}</p>
+              </div>
+              <div class="card-footer">
+                <a href="{{ event.url }}" class="btn btn-primary">Learn more</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  </div>
+{% endblock %}

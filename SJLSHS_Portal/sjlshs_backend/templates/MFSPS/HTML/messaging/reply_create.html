@@ -1,0 +1,27 @@
+{% extends 'portal-base.html'%}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<style>
+    #summernote-editor {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+</style>
+    <div class="content-wrapper">
+        <form method="post" class="mx-5">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.recipient|as_crispy_field }}
+            </div>
+            <div class="mb-3">
+                {{ form.subject|as_crispy_field }}
+            </div>
+            <div class="mb-3" id="summernote-editor">
+                {{ form.body|as_crispy_field }}
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends 'portal-base.html'%}
+{% load static %}
+
+{%block content%}
+
+<style>
+  @media (min-width: 768px) {
+    #calendar-table {
+      table-layout: fixed;
+    }
+  }
+</style>
+
+<script src="{% static 'CSS/jquery-3.6.4.min.js'%}"></script>
+<div class="content-wrapper">
+
+  <div class="container-fluid">
+
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped" id='calendar-table'>
+        <thead>
+          <tr>
+            <th class="bg-dark text-white text-center" colspan="7">Calendar for the Month of <span
+                id="current-month"></span> </th>
+          </tr>
+          <tr>
+            <th class="bg-light text-muted">Sun</th>
+            <th class="bg-light text-muted">Mon</th>
+            <th class="bg-light text-muted">Tue</th>
+            <th class="bg-light text-muted">Wed</th>
+            <th class="bg-light text-muted">Thu</th>
+            <th class="bg-light text-muted">Fri</th>
+            <th class="bg-light text-muted">Sat</th>
+          </tr>
+        </thead>
+        <tbody id="calendar-body">
+          <tr>
+            <td class="text-muted"></td>
+            <td class="text-muted"></td>
+            <td class="text-muted"></td>
+            <td class="text-muted"></td>
+            <td class="text-muted"></td>
+            <td>1</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+          </tr>
+          <tr>
+            <td>17</td>
+            <td>18</td>
+            <td>19</td>
+            <td>20</td>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+          </tr>
+          <tr>
+            <td>24</td>
+            <td>25</td>
+            <td>26</td>
+            <td>27</td>
+            <td>28</td>
+            <td>29</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>31</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+
+    var months = ['January', 'February', 'March', 'April',
+      'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var currentDate = new Date();
+    var currentMonth = months[currentDate.getMonth()];
+
+    $('#current-month').text(currentMonth);
+    // Make AJAX call to get events
+    $.ajax({
+      url: "{% url 'get-calendar-events' %}",
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        // Loop over events and display them in the calendar
+        $.each(data, function (index, event) {
+          // Set the background color of the event based on its level
+          var bgColor;
+          switch (event.level) {
+            case 'IMPORTANT':
+              bgColor = 'red';
+              break;
+            case 'REMINDER':
+              bgColor = 'blue';
+              break;
+            case 'Low':
+              bgColor = 'green';
+              break;
+            default:
+              bgColor = 'gray';
+          }
+
+          // Add the event to the calendar
+          var start = new Date(event.start);
+          var end = new Date(event.end);
+          var title = event.title;
+          var description = event.description;
+          var eventHtml = '<div class="card text-center text-white" style="background-color:' + bgColor + '; object-fit:contain;" title="' + description + '">' + title + ' (' + start.toDateString() + ' - ' + end.toDateString() + ')</div>';
+          $('#calendar-body td').filter(function () {
+            return $(this).text() == start.getDate();
+          }).append(eventHtml);
+        });
+      },
+      error: function () {
+        console.log("Error retrieving events.");
+      }
+    });
+  });
+</script>
+{% endblock %}

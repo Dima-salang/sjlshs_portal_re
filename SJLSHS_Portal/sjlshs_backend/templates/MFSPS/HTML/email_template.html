@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Student Verification</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			background-color: #f7f7f7;
+			font-family: Arial, sans-serif;
+			color: #444444;
+			font-size: 16px;
+			line-height: 1.4;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			background-color: #ffffff;
+			padding: 40px;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+			border-radius: 10px;
+			margin-top: 40px;
+			margin-bottom: 40px;
+		}
+		h1 {
+			font-size: 28px;
+			margin-top: 0;
+			margin-bottom: 20px;
+			color: #444444;
+			text-align: center;
+		}
+		p {
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+		button {
+			background-color: #007bff;
+			color: #ffffff;
+			padding: 12px 20px;
+			font-size: 16px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			display: block;
+			margin: 0 auto;
+			margin-top: 30px;
+		}
+		button:hover {
+			background-color: #0061b6;
+		}
+		.footer {
+			margin-top: 40px;
+			padding-top: 20px;
+			border-top: 1px solid #e5e5e5;
+			font-size: 14px;
+			color: #777777;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>New Student Verification</h1>
+		<p>Hi {{ user.username }},</p>
+		<p>Please click on the button below to confirm your registration:</p>
+		<a href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}"><button>Confirm Registration</button></a>
+		<p>If you did not register, please ignore this email.</p>
+	</div>
+	<div class="footer">
+		<p>This email was sent to you by San Jose Litex Senior High School. To unsubscribe, please contact us at sjlshs.noreply@gmail.com.</p>
+	</div>
+</body>
+</html>

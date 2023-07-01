@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<body style="background: #5C258D;
+background: -webkit-linear-gradient(to right, #4389A2, #5C258D);
+background: linear-gradient(to right, #4389A2, #5C258D);">
+<div class="container my-4" id="teacher-reg">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h4>Create New Teacher Account</h4>
+        </div>
+        <div class="card-body">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Create Account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+{% endblock %}

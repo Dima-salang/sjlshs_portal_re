@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row" id="row-2-school-logo">
+      <div class="col" id="col-school-logo">
+        <img class="mx-auto d-block" src="{% static 'images/sjlshs_croppedV4.png'%}">
+        <h1 id="bg-title">{{page.title}}</h1>
+      </div>
+    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p>{{page.body}}</p>
+      </div>
+    </div>
+    <div class="row">
+      {% for article_page in page.get_children %}
+          <div class="col-md-4">
+            <div class="card w-25 mb-4 shadow-sm">
+              {% image article_page.image fill-500x500 class="card-img-top" %}
+              <div class="card-body">
+                <h5 class="card-title">{{ article_page.specific.title }}</h5>
+                <p class="card-text">{{ article_page.specific.body|richtext }}</p>
+                <a href="{{ article_page.url }}" class="btn btn-primary">Read more</a>
+              </div>
+            </div>
+          </div>
+        
+      {% empty %}
+        <div class="col">
+          <p>No articles found.</p>
+        </div>
+      {% endfor %}
+    
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+
+<head>
+	<title>Verify Your Account</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static '/CSS/design.css' %}">
+	<link rel="stylesheet" href="{% static '/CSS/bootstrap-5.2.2-dist/bootstrap-5.2.2-dist/css/bootstrap.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+</head>
+
+<body id="signup-redirect-body">
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-md-6 col-sm-12 text-center">
+				<img class="img-fluid" src="{%static 'images/maps_logo.png'%}">
+				<h1 class="display-4">Verify Your Account</h1>
+				<p class="lead mb-4">A verification email has been sent to your email address. Please check your email
+					and click on the verification link to activate your account.</p>
+				<a href="https://mail.google.com/" class="text-center" target="_blank">Gmail</a>
+				<a href="https://outlook.live.com/owa/" target="_blank">MS Outlook</a>
+				<a href="https://mail.yahoo.com" target="_blank">Yahoo Mail</a>
+				<hr class="my-4">
+				<p class="mb-0">Please note that if you cannot log in immediately, the administrator is still verifying
+					your account. Kindly wait, thank you.</p>
+				<a href="{% url 'two_factor:login' %}"><button class="btn btn-primary mt-5">Proceed to Log-In</button></a>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

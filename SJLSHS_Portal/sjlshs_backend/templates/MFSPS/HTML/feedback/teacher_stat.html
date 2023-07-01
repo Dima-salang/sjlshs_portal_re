@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content-wrapper">
+    <div class="row">
+        <canvas id="feedback-chart"></canvas>
+    </div>
+</div>
+<script>
+    // Make an AJAX request to the view that returns the feedback statistics for the teacher
+fetch(`/teacher_feedback_statistics/${teacher_id}`)
+  .then(response => response.json())
+  .then(data => {
+    // Create the chart using the returned data
+    const chart = new Chart(document.getElementById('feedback-chart'), {
+      type: 'bar',
+      data: {
+        labels: Object.keys(data),
+        datasets: [{
+          label: 'Average Score',
+          data: Object.values(data),
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  });
+
+</script>
+{% endblock %}

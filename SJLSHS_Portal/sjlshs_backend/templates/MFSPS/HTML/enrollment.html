@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Student Enrollment</h1>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Enrollment Details</h3>
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">
+          <i class="bi bi-check-circle-fill text-success"></i> Junior high-school graduates are automatically qualified
+          for enrollment at San Jose-Litex Senior High School.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <i class="bi bi-check-circle-fill text-success"></i> Students who are qualified must follow the enrollment
+          guidelines and compile the necessary requirements for enrollment.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <i class="bi bi-check-circle-fill text-success"></i> Enrollees are required to submit the following:
+          <ul>
+            <li>Original and photocopy of the report card (Form 138)</li>
+            <li>Original and photocopy of the birth certificate</li>
+            <li>Two (2) recent 2x2 ID pictures</li>
+            <li>Accomplished enrolment form</li>
+          </ul>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h3>Enrollment Requirements</h3>
+      <div class="list-group">
+        <form>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkbox2">
+            <label class="form-check-label" for="checkbox2">
+              Original and photocopy of the report card (Form 138)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkbox3">
+            <label class="form-check-label" for="checkbox3">
+              Original and photocopy of the birth certificate
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkbox4">
+            <label class="form-check-label" for="checkbox4">
+              Two (2) recent 2x2 ID pictures
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkbox5">
+            <label class="form-check-label" for="checkbox5">
+              Accomplished enrolment form
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <h2 class="mt-4">Enrollment Procedure</h2>
+    <div class="col lg-6 md-6 sm-12">
+      <div id="list-example" class="list-group">
+        <a class="list-group-item list-group-item-action" href="#list-item-1">Visit the Admission Page</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-2">Compile the necessary requirements</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-3">Go to the prescribed enrollment dates for
+          your grade level</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-4">Get the proof of enrollment</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-5">Wait for the confirmation of your
+          enrollment</a>
+      </div>
+    </div>
+    <div class="col lg-6 md-6 sm-12">
+      <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example"
+        tabindex="0" style="max-height: 200px; overflow-y: scroll;">
+        <h4 id="list-item-1">Visit the Admission Page</h4>
+        <p>Go to the San Jose-Litex Senior High School website and navigate to the Admission page.
+          Read the instructions and guidelines for enrollment carefully.
+          Ensure that you meet the eligibility requirements before proceeding with
+          the enrollment process. If you have any questions or concerns, you may
+          contact the Admissions Office through the provided contact information on the website.</p>
+        <h4 id="list-item-2">Compilation of Documents</h4>
+        <p>Compile all the necessary documents for enrollment.
+          These include an original and photocopy of your report card (Form 138),
+          an original and photocopy of your birth certificate, two recent 2x2 ID pictures,
+          and the accomplished enrollment form. Ensure that all the documents are complete,
+          accurate, and up-to-date. If there are any missing or incomplete documents,
+          you will not be allowed to proceed with the enrollment process.</p>
+        <h4 id="list-item-3">Enrollment Period</h4>
+        <p>During the enrollment period, proceed to the San Jose-Litex Senior High School campus
+          and submit all the necessary documents to the Admissions Office.
+          Pay the required fees and charges, and attend any orientation sessions, if there are any.
+          Ensure that you follow all the guidelines and instructions provided by
+          the school during the enrollment process.</p>
+        <h4 id="list-item-4">Get Proof of Enrollment</h4>
+        <p>After submitting all the necessary documents and paying the required fees,
+          you will receive a proof of enrollment from the Admissions Office.
+          This may be in the form of a receipt or an official document.
+          Keep this proof of enrollment in a safe and secure place,
+          as you will need it for future transactions with the school.</p>
+        <h4 id="list-item-5">Wait for Enrollment Confirmation</h4>
+        <p>After completing the enrollment process, wait for confirmation from the
+          school that you have been officially enrolled.
+          The school will inform you of the date of the start of classes
+          and provide you with any other information that you need to know.
+          If you have any questions or concerns, you may contact the school’s
+          Admissions Office for assistance.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function checkAllBoxes() {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var allChecked = true;
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (!checkboxes[i].checked) {
+        allChecked = false;
+        break;
+      }
+    }
+    if (allChecked) {
+      alert("Congratulations! You have checked all enrollment requirements.");
+    }
+  }
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  for (var i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].addEventListener('change', checkAllBoxes);
+  }
+</script>
+
+{% endblock %}

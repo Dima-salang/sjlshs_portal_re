@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block content %}
+  <h1>{{ self.title }}</h1>
+  <p>{{ self.body }}</p>
+
+  
+{% endblock %}
+</body>
+</html>

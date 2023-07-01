@@ -1,0 +1,150 @@
+{% extends "two_factor/_base_focus.html" %}
+{% load i18n %}
+{% load two_factor_tags %}
+{% load static %}
+
+{% block extra_media %}
+{{ form.media }}
+{% endblock %}
+
+{% block content %}
+
+<body>
+
+  <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdrop2Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <div class="modal-body text-center px-0 py-0">
+          <h1 class="mb-3 mt-2 display-5">Who are you?</h1>
+
+          <div class="card rounded-0 pb-3 w-100" id="signup-cards-new">
+            <div class="row my-4">
+              <a href="#" class="text-decoration-none text-white" data-bs-dismiss="modal">
+                <h2 class="mb-2 text-white display-6 text-center">
+                  New Student</h2>
+              </a>
+            </div>
+          </div>
+          <div class="card rounded-0 pb-3 w-100" id="signup-cards-registered">
+            <div class="row my-4">
+              <a href="{% url 'two_factor:login'%}" class="text-decoration-none text-white">
+                <h2 class="mb-2 text-white display-6 text-white">
+                  Registered User</h2>
+              </a>
+            </div>
+          </div>
+          <div class="card rounded-0 pb-3 w-100" id="signup-cards-editor">
+            <div class="row my-4">
+              <a href="http://127.0.0.1:8000/account/login/?next=/cms/" class="text-decoration-none text-white">
+                <h2 class="mb-2 text-white display-6">
+                  Editor</h2>
+              </a>
+            </div>
+          </div>
+          <div class="card rounded-0 pb-3 w-100" id="signup-cards-teacher">
+            <div class="row my-4">
+              <a href="{% url 'admin:index'%}" class="text-decoration-none text-white">
+                <h2 class="mb-2 text-white display-6">
+                  Teacher</h2>
+              </a>
+            </div>
+          </div>
+          <div class="card rounded-0 pb-3 w-100" id="signup-cards-admin">
+            <div class="row my-4">
+              <a href="{% url 'admin:index'%}" class="text-decoration-none text-white">
+                <h2 class="mb-2 text-white display-6">
+                  Admin</h2>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container-fluid px-0 py-0 my-0">
+
+    <div class="row">
+
+
+      <div class="col-lg-5 col-sm-12 px-0 pb-3">
+
+
+        <div class="card min-height-100vh shadow-none" id="student-login">
+          <div class="text-center">
+            <img src="{%static 'images/std_portal_logo2.png'%}" class="img-fluid" id="sjlshs-logo-login">
+            <h1 class="text-center text-primary" id="sign-in-title">Sign In</h1>
+            <a class="text-center" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Log-In Options</a>.
+          </div>
+
+          {% if wizard.steps.current == 'auth' %}
+          <p class="text-center">{% blocktrans %}Enter your credentials to start your session.{% endblocktrans %}</p>
+          {% elif wizard.steps.current == 'token' %}
+          <p class="text-center pb-5">{{ device|as_verbose_action }}</p>
+          {% elif wizard.steps.current == 'backup' %}
+          <p>{% blocktrans trimmed %}Use this form for entering backup tokens for logging in.
+            These tokens have been generated for you to print and keep safe. Please
+            enter one of these backup tokens to login to your account.{% endblocktrans %}</p>
+          {% endif %}
+
+
+
+          <form action="" method="post" class="mx-5">{% csrf_token %}
+            {% include "two_factor/_wizard_forms.html" %}
+            <a href="{% url 'forgot-password' %}" class="d-block">Forgot Password?</a>
+
+            {# hidden submit button to enable [enter] key #}
+            <input type="submit" class="btn btn-outline-primary" value="" hidden />
+
+
+            {% if other_devices %}
+            <p>{% trans "Or, alternatively, use one of your other authentication methods:" %}</p>
+            <p>
+              {% for other in other_devices %}
+              <button name="challenge_device" value="{{ other.persistent_id }}" class="btn btn-secondary btn-block"
+                type="submit">
+                {{ other|as_action }}
+              </button>
+              {% endfor %}
+            </p>
+            {% endif %}
+
+            {% include "two_factor/_wizard_actions.html" %}
+          </form>
+
+        </div>
+      </div>
+      <div class="col-lg-7 col-sm-12 px-0 mx-0">
+        <img src="{% static 'images/comlab.jpg'%}" class="img-fluid rounded-0 h-100">
+      </div>
+    </div>
+
+
+
+    {% block 'backup_tokens' %}
+    {% if backup_tokens %}
+    <hr>
+    <div class="backup_tokens_form">
+      <form action="" method="post">
+        {% csrf_token %}
+        <p>{% trans "As a last resort, you can use a backup token:" %}</p>
+        <p>
+          <button name="wizard_goto_step" type="submit" value="backup" class="btn btn-sm btn-secondary btn-block">{%
+            trans "Use Backup Token" %}</button>
+        </p>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  {% endif %}
+  {% endblock %}
+
+  {% endblock %}
+</body>

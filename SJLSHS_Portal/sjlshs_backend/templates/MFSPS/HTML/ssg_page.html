@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row" id="row-2-school-logo">
+    <div class="col" id="col-school-logo">
+      <img class="mx-auto d-block" src="{% static 'images/sjlshs_croppedV4.png'%}">
+      <h1 id="bg-title">Student Organizations</h1>
+    </div>
+  </div>
+  <div class="row text-center">
+    <h2 class="text-center display-4">Explore our student organizations</h2>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for org_page in home_page.get_children %}
+    <div class="col">
+      <div class="card h-100">
+        {% image org_page.specific.feed_image fill-300x300 class="card-img-top"%}
+        <div class="card-body">
+          <h5 class="card-title">{{ org_page.title }}</h5>
+          <p class="card-text">{{ org_page.body}}</p>
+        </div>
+        <div class="card-footer">
+          <a href="{{ org_page.url }}" class="btn btn-primary">Learn more</a>
+          {% if org_page.icon %}
+          <img src="{{ org_page.icon.url }}" class="icon float-end" alt="{{ org_page.title }} icon">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

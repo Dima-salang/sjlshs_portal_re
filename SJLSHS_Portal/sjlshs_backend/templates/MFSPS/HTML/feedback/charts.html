@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% autoescape off %}
+    <div class="content-wrapper">
+
+   
+    <div class="row">
+    <h1>Overall Teacher Feedback</h1>
+    <div class="col-lg-6">
+        <canvas id="teacher-scores-chart"></canvas>
+    </div>
+    
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        $.ajax({
+            url: "{% url 'teacher_scores_chart' %}",
+            success: function (data) {
+                var teacher_scores = data.teacher_scores;
+                var ctx = document.getElementById('teacher-scores-chart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: teacher_scores.map(function (item) {
+                            return item.feedback_teacher__username;
+                        }),
+                        datasets: [{
+                            label: 'Overall Score',
+                            data: teacher_scores.map(function (item) {
+                                return item.overall_score;
+                            }),
+
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+{% endautoescape %}
+{% endblock %}
